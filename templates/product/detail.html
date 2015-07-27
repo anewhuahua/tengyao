@@ -1,0 +1,60 @@
+<ion-view view-title="{{detail.name}}">
+
+
+<ion-nav-buttons side="left">
+  <a class="button-light left"
+    ng-click="myGoBack()">
+    <i class="ion-arrow-left-c"></i> 返回
+  </a>
+
+</ion-nav-buttons>-
+
+
+<ion-nav-buttons side="right">
+
+
+   <a class="button-light right"
+    ng-click="myGoBack()">
+    <i class="ion-ios-cart"></i> 购物车
+  </a>
+
+</ion-nav-buttons>
+
+
+
+<ion-content>
+
+
+<div class="card">
+  <div class="item item-text-wrap">
+    <p>
+	{{detail.name}}
+	</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="item item-text-wrap">
+    <p>
+	{{detail.detail}}
+	</p>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="item item-text-wrap">
+    <p>
+	
+	<button class="button center icon-top ion-heart">收藏</button>
+	</p>
+  </div>
+</div>
+
+</ion-content>
+</ion-view>
+
+
+
+
+
