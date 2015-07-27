@@ -76,7 +76,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
   
-  
+
+  // product
   .state('product', {
     url: '/product',
     abstract: true,
@@ -94,6 +95,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  // customers
   .state('customers', {
     url: '/customers',
     abstract: true,
@@ -129,6 +131,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  // money
   .state('money', {
     url: '/money',
     abstract: true,
@@ -157,7 +160,34 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         templateUrl: 'templates/money/unpaid.html'
       }
     }
+  })
+
+
+  // order
+  .state('orders', {
+    url: '/orders',
+    abstract: true,
+    templateUrl: 'templates/orders.html'
+  })
+  .state('orders.all', {
+    url: '/all',
+    views: {
+      'orders-all': {
+        templateUrl: 'templates/orders/all.html',
+        controller: 'ordersAllCtrl'
+      }
+    }
+  })
+  .state('orders.waiting', {
+    url: '/waiting',
+    views: {
+      'orders-all': {
+        templateUrl: 'templates/orders/waiting.html',
+        controller: 'ordersAllCtrl'
+      }
+    }
   });
+
 
   $urlRouterProvider.otherwise('/main/index');
   //$urlRouterProvider.otherwise('/detail');

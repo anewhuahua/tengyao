@@ -64,15 +64,37 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('ordersAllCtrl', function($scope) {
+  $scope.orders = [{
+    id: 'TY2015AIUS5029',
+    customer: 'Ben Sparrow',
+    product: '盈泰磐海对接新泽量化',
+    status: '通过审核，等待支付',
+    face: 'img/profile1.png'
+  }, {
+    id: 'TY2015AXXEX029',
+    customer: 'Perry Governor',
+    product: '盈泰磐海对接新泽量化',
+    status: '已完成支付，等待上传资料',
+    face: 'img/profile2.png'
+  }, {
+    id: 'TY2015BCVEX056',
+    customer: 'Perry Governor',
+    product: '盈泰磐海对接新泽量化',
+    status: '交易完成',
+    face: 'img/profile3.png'
+  }];
+})
+
 .controller('customersServeCtrl', function($scope) {
   $scope.customers = [{
     id: 0,
     name: 'Ben Sparrow',
-    face: 'http://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    face: 'img/profile1.png'
   }, {
     id: 1,
     name: 'Max Lynx',
-    face: 'http://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    face: 'img/profile2.png'
   }];
 })
 
@@ -80,11 +102,11 @@ angular.module('starter.controllers', [])
   $scope.customers = [{
     id: 0,
     name: 'Ben Sparrow',
-    face: 'http://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    face: 'img/profile3.png'
   }, {
     id: 3,
     name: 'Perry Governor',
-    face: 'http://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+    face: 'img/profile4.png'
   }];
 })
 
@@ -92,19 +114,19 @@ angular.module('starter.controllers', [])
   $scope.customers = [{
     id: 0,
     name: 'Ben Sparrow',
-    face: 'http://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    face: 'img/profile1.png'
   }, {
     id: 1,
     name: 'Max Lynx',
-    face: 'http://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    face: 'img/profile2.png'
   }, {
     id: 2,
     name: 'Adam Bradleyson',
-    face: 'http://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    face: 'img/profile3.png'
   }, {
     id: 3,
     name: 'Perry Governor',
-    face: 'http://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+    face: 'img/profile4.png'
   }];
 });
 
