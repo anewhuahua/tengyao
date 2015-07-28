@@ -99,7 +99,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   .state('customers', {
     url: '/customers',
     abstract: true,
-    templateUrl: 'templates/customers.html',
+    templateUrl: 'templates/customers.html'
   })
 
 
@@ -162,6 +162,22 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+  // booking
+  .state('booking', {
+    url: '/booking',
+    abstract: true,
+    templateUrl: 'templates/booking.html'
+  })
+  .state('booking.detail', {
+    url: '/detail',
+    views: {
+      'booking-detail': {
+        templateUrl: 'templates/booking/detail.html',
+        controller: 'bookingDetailCtrl'
+      }
+    }
+  })
+  
 
   // order
   .state('orders', {
@@ -174,15 +190,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'orders-all': {
         templateUrl: 'templates/orders/all.html',
-        controller: 'ordersAllCtrl'
-      }
-    }
-  })
-  .state('orders.waiting', {
-    url: '/waiting',
-    views: {
-      'orders-all': {
-        templateUrl: 'templates/orders/waiting.html',
         controller: 'ordersAllCtrl'
       }
     }

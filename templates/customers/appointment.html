@@ -6,11 +6,12 @@
    <div class="list">
 
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="customer in customers" 
-       type="item-text-wrap" href="#/customer/detail/{{customer.id}}">
+       type="item-text-wrap" href="#/booking/detail">
         <img ng-src="{{customer.face}}">
         <h2>{{customer.name}}</h2>
         <p>{{customer.name}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <i class="badge badge-positive">预约中</i>
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
       </ion-item>
 
   </div>

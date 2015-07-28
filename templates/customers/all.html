@@ -7,11 +7,11 @@
    <div class="list">
 
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="customer in customers" 
-       type="item-text-wrap" href="#/customer/detail/{{customer.id}}">
+       type="item-text-wrap" href="#/booking/detail">
         <img ng-src="{{customer.face}}">
         <h2>{{customer.name}}</h2>
         <p>{{customer.name}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <p style="color:red;">{{customer.status}}</p>
       </ion-item>
 
   </div>
