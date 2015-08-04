@@ -1,32 +1,24 @@
 
 
-<ion-view view-title="{{categoryNames[categoryID]}}">
-
-	<ion-nav-buttons side="left">
-	    <a class="button  button-icon button-clear ion-navicon" ng-click="popover.show($event);">
-	    </a>
-        
-	</ion-nav-buttons>
-
+<ion-view view-title="aaa">
 
   	<ion-content>
-  		<div class="bar-subheader bar-stable">
-			<div class="button-bar">
-				<a class="button button-balanced">按价格</a>
-				<a class="button button-clear">按收益</a>
-				<a class="button button-clear">按时间</a>
-			</div>
-		</div>
-
-     
-      
 	  	<div class="list">
-	       	<a class="item item-avatar"  ng-repeat="product in products |filter:{category: categoryID}" href="#/product/detail/12">
-	      	<img src="img/download.png">
-	     	<h2>{{product.name}}</h2>
-	  		<p>六个月	预期收益</p>
-	  		<p>100万起	10%</p>
-	    	</a>
+	       <a class="item" href="#main/products/categories/1">
+              公募基金
+            </a>
+            <a class="item" href="#main/products/categories/2">
+              私募基金
+            </a>
+            <a class="item" href="#main/products/categories/3">
+              信托产品
+            </a>
+            <a class="item" href="#main/products/categories/4">
+              组合产品
+            </a>
+             <a class="item" href="#main/products/categories/5">
+              服务类产品
+            </a>
 		  </div>
 
   </ion-content>
@@ -56,7 +48,7 @@
       </ion-popover-view>
     </script>
 -->
-  <multiple-views-support width="80%" />
+  <multiple-views-support width="20%" />
 </ion-view>
 
 

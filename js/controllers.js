@@ -2,16 +2,27 @@ angular.module('starter.controllers', [])
 
 .controller('mainIndexCtrl', function($scope) {})
 
+
+.controller('customersCtrl', function($scope, $ionicSideMenuDelegate,$timeout) {
+  
+  //$scope.$on('$ionicView.enter', function() {
+     // Code you want executed every time view is opened
+     //console.log('Opened!')
+
+    // $ionicSideMenuDelegate.toggleRight();
+  //})
+  //$timeout(function (){
+   
+  //});
+})
+
+
+
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams) {
-  $scope.categoryNames = ["", "私募基金", "公募基金", "信托", "组合产品"]
+  $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
   $scope.categoryID = $stateParams.categoryID;
 
-  $ionicPopover.fromTemplateUrl('templates/main/products/categories.html', {
-    scope: $scope
-  })
-  .then(function(popover){
-    $scope.popover = popover;
-  });
+  
 
   $scope.products = [{
     id: 0,
@@ -103,7 +114,15 @@ angular.module('starter.controllers', [])
   }];
 })
 
-.controller('customersAppointmentCtrl', function($scope) {
+.controller('customersAppointmentCtrl', function($scope, $ionicSideMenuDelegate) {
+
+  $scope.$on('$ionicView.enter', function() {
+     // Code you want executed every time view is opened
+     console.log('Opened!')
+
+     $ionicSideMenuDelegate.toggleLeft(true);
+  })
+
 
   $scope.customers = [{
     id: 0,
