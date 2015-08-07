@@ -15,6 +15,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers'])
     if(window.StatusBar) {
       StatusBar.styleLightContent();
     }
+
+    ionic.Platform.fullScreen();
   });
 })
 

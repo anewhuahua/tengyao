@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 .row {
   display: flex;
   flex-direction: row;
@@ -20,4 +21,17 @@
 .slider img {
 	height: 300px;
 	width: 100%;
+}
+
+.bar-header {
+   height: 80px; /*just an example*/
+
+}
+.bar-header .title {
+   height: 80px;
+   line-height: 80px;
+}
+
+.has-header {
+   top: 80px;
 }
