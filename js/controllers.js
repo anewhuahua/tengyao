@@ -67,11 +67,15 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainToolBoxCtrl', function($scope, $state, Membership) {
-
+  Membership.login();
   if (Membership.state() == 'guest') {
     $state.go('common.login');
   }
 
+})
+.controller('commonLoginCtrl', function($scope, $state, Membership) {
+    console.log("dasfasg");
+    Membership.login();
 })
 
 .controller('productDetailCtrl', function($scope,$ionicHistory,$stateParams) {

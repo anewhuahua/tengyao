@@ -214,8 +214,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     url: '/login',
     views: {
       'common-login': {
-        templateUrl: 'templates/common/login.html'
-        //contoller: "commonLoginCtrl"
+        templateUrl: 'templates/common/login.html',
+        contoller: "commonLoginCtrl"
       }
     }
   })
