@@ -215,7 +215,7 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     views: {
       'common-login': {
         templateUrl: 'templates/common/login.html',
-        contoller: "commonLoginCtrl"
+        controller: "commonLoginCtrl"
       }
     }
   })
@@ -223,8 +223,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     url: '/register',
     views: {
       'common-login': {
-        templateUrl: 'templates/common/register.html'
-        //contoller: "commonLoginCtrl"
+        templateUrl: 'templates/common/register.html',
+        controller: "commonRegisterCtrl"
       }
     }
   });

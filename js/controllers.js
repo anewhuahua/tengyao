@@ -67,15 +67,24 @@ angular.module('starter.controllers', [])
 
 
 .controller('mainToolBoxCtrl', function($scope, $state, Membership) {
-  Membership.login();
+  console.log('toolbox');
+  //Membership.login();
   if (Membership.state() == 'guest') {
     $state.go('common.login');
   }
 
 })
 .controller('commonLoginCtrl', function($scope, $state, Membership) {
-    console.log("dasfasg");
-    Membership.login();
+    $scope.signIn = function(user){
+      Membership.login(user);
+
+      setTimeout(function(){
+        if(Membership.state() != 'guest') {
+          console.log("aaaa");
+          $state.go('main.toolbox');
+        }
+      }, 1000);
+    }
 })
 
 .controller('productDetailCtrl', function($scope,$ionicHistory,$stateParams) {

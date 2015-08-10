@@ -6,26 +6,29 @@ angular.module('starter.services', [])
 
   return {
     state: function() {
-      console.log("tyson1");
       return client;
     },
 
 
-    login: function() {
+    login: function(user) {
 
-      
+      ok = false;
       var req = {
         method: 'POST',
-        url: 'http://115.29.178.80:8080/ChiefFinancierService/login?username=customer&password=password',
+        url: 'http://115.29.178.80:8080/ChiefFinancierService/login?username='+
+              user.username + '&password=' + user.password,
         headers: {
          'Content-Type': 'application/json'
         }
       };
       $http(req).then(function(res){  
           console.log('login success!');
+          client = "member";
+          ok = true;
+          return ok;
       });
-
-
+     
+      /*
       setTimeout(function(){
         //do what you need here
          var req = {
@@ -45,8 +48,8 @@ angular.module('starter.services', [])
             console.log(res);
           });
       }, 1000);
-     
-      return;
+      */
+      
     }
   }
 
