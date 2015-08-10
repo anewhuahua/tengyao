@@ -16,7 +16,13 @@ angular.module('starter.controllers', [])
   //});
 })
 
-
+.controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams) {
+  $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
+  $scope.categoryID = $stateParams.categoryID;
+  $scope.selectedCategory = $scope.categoryID;
+         
+  
+})
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams) {
   $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
@@ -60,7 +66,13 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('mainToolBoxCtrl', function($scope) {})
+.controller('mainToolBoxCtrl', function($scope, $state, Membership) {
+
+  if (Membership.state() == 'guest') {
+    $state.go('common.login');
+  }
+
+})
 
 .controller('productDetailCtrl', function($scope,$ionicHistory,$stateParams) {
   var productID = $stateParams.productID;

@@ -1,22 +1,30 @@
 
 
-<ion-view view-title="aaa">
+
+<ion-view>
 
   	<ion-content>
 	  	<div class="list">
-	       <a class="item" href="#main/products/categories/1">
+        <!--
+	         <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}" ng-click="selectedCategory = 1">-->
+            <a class="item item-avatar"  href="#/main/products/categories/1" ng-class="{'item-energized' : selectedCategory==1}">
+              <img src="img/lbanr1img2.png"/>
               公募基金
             </a>
-            <a class="item" href="#main/products/categories/2">
+            <a class="item item-avatar" href="#/main/products/categories/2" ng-class="{'item-energized' : selectedCategory==2}"> 
+              <img src="img/lbanr1img1.png"/>
               私募基金
             </a>
-            <a class="item" href="#main/products/categories/3">
+            <a class="item item-avatar" href="#/main/products/categories/3" ng-class="{'item-energized' : selectedCategory==3}">
+              <img src="img/lbanr1img3.png"/>
               信托产品
             </a>
-            <a class="item" href="#main/products/categories/4">
+            <a class="item item-avatar" href="#/main/products/categories/4" ng-class="{'item-energized' : selectedCategory==4}">
+              <img src="img/lbanr1img1.png"/>
               组合产品
             </a>
-             <a class="item" href="#main/products/categories/5">
+             <a class="item item-avatar" href="#/main/products/categories/5" ng-class="{'item-energized' : selectedCategory==5}">
+              <img src="img/lbanr1img2.png"/>
               服务类产品
             </a>
 		  </div>
@@ -48,7 +56,7 @@
       </ion-popover-view>
     </script>
 -->
-  <multiple-views-support width="20%" />
+  <multiple-views-support width="30%" />
 </ion-view>
 
 

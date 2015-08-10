@@ -1,12 +1,18 @@
 
 
-<ion-view view-title="{{categoryNames[categoryID]}}">
+<ion-view>
+  <ion-nav-title>
+       <div class="logotop"><img src="img/logotop.png" title="" alt="" /></div>
+         
+  
+  </ion-nav-title>
 
-	<ion-nav-buttons side="left">
+
+	<!--<ion-nav-buttons side="left">
 	    <a class="button  button-icon button-clear ion-navicon" ng-click="popover.show($event);">
 	    </a>
         
-	</ion-nav-buttons>
+	</ion-nav-buttons>-->
 
 
   	<ion-content>
@@ -19,7 +25,7 @@
 		</div>
 
      
-      
+      <!--
 	  	<div class="list">
 	       	<a class="item item-avatar"  ng-repeat="product in products |filter:{category: categoryID}" href="#/product/detail/12">
 	      	<img src="img/download.png">
@@ -28,6 +34,28 @@
 	  		<p>100万起	10%</p>
 	    	</a>
 		  </div>
+    -->
+
+        <div class="list">
+              <div class="item">
+              <a ng-repeat="product in products |filter:{category: categoryID}" href="#/product/detail/12"> 
+                   <div class="lbanr2uldv1"><span>推荐</span> <em>热销</em> <i>粤财·瀚信中鼎盈丰2期</i> </div>
+
+                   <div class="lbanr2uldv2">
+                        <div class="lbar2v2lef"> <em>10.50%</em> <span>预期年化</span> </div>
+                        <div class="lbar2v2lef"> <em>120天</em> <span>理财期限</span> </div>
+                        <div class="lbar2v2rig">
+                          <span>目标规模<em>36,500.00</em>万元</span>
+                          <span>认购费用<em>10</em>万 起</span>
+                          <span>剩余时间<em>24</em>天</span>
+                        </div>
+                   </div>
+                   
+                </a>
+
+              </div>
+          </div>
+
 
   </ion-content>
 
@@ -56,7 +84,7 @@
       </ion-popover-view>
     </script>
 -->
-  <multiple-views-support width="80%" />
+  <multiple-views-support width="70%" />
 </ion-view>
 
 

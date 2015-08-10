@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers'])
+angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -67,6 +67,7 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers'])
 
       'main-categories': {
          templateUrl: 'templates/main/categories.html',
+         controller: 'mainCategoriesCtrl'
          
       }
     }
@@ -201,11 +202,36 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers'])
         controller: 'ordersAllCtrl'
       }
     }
+  })
+
+
+  .state('common', {
+    url: '/common',
+    abstract: true,
+    templateUrl: 'templates/common.html'
+  })
+ .state('common.login', {
+    url: '/login',
+    views: {
+      'common-login': {
+        templateUrl: 'templates/common/login.html'
+        //contoller: "commonLoginCtrl"
+      }
+    }
+  })
+ .state('common.register', {
+    url: '/register',
+    views: {
+      'common-login': {
+        templateUrl: 'templates/common/register.html'
+        //contoller: "commonLoginCtrl"
+      }
+    }
   });
 
 
   $urlRouterProvider.otherwise('/main/index');
-  //$urlRouterProvider.otherwise('/detail');
+  //$urlRouterProvider.otherwise('/common/register');
 
   /*
   .state('tab.dash', {
