@@ -24,13 +24,23 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams) {
+.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership) {
   $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
   $scope.categoryID = $stateParams.categoryID;
 
+  //Membership.getProducts();
+  $scope.products=[];
+  console.log("tyson");
+  Membership.getProducts();
   
 
-  $scope.products = [{
+  setTimeout(function(){
+     $scope.products = Membership.getMyProducts();       
+  }, 300);
+
+
+  /*
+  [{
     id: 0,
     name: '盈泰磐海对接新泽量化',
     detail: 'You on your way?',
@@ -60,7 +70,7 @@ angular.module('starter.controllers', [])
     name: '盈泰磐海对接新泽量化',
     detail: 'I should buy a boat',
     category: '3'
-  }];
+  }];*/
 
 })
 
@@ -69,11 +79,17 @@ angular.module('starter.controllers', [])
 .controller('mainToolBoxCtrl', function($scope, $state, Membership) {
   console.log('toolbox');
   //Membership.login();
-  if (Membership.state() == 'guest') {
-    $state.go('common.login');
-  }
 
+  $scope.$on('$ionicView.enter', function() {
+     // Code you want executed every time view is opened
+     //console.log('Opened!')
+    if (Membership.state() == 'guest') {
+      $state.go('common.login');
+    }
+    // $ionicSideMenuDelegate.toggleRight();
+  })
 })
+
 .controller('commonLoginCtrl', function($scope, $state, Membership) {
     $scope.signIn = function(user){
       Membership.login(user);

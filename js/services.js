@@ -1,12 +1,34 @@
 angular.module('starter.services', [])
 
 .factory('Membership', function($http,$state) {
-
+  var products = [];
   var client = "guest";
 
   return {
     state: function() {
       return client;
+    },
+
+    getProducts: function() {
+      var req = {
+        method: 'GET',
+        url: 'http://115.29.194.11:8080/ChiefFinancierService/api/common/v1/privatefunds',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      $http(req).then(function(res){
+          //console.log(res);
+          //console.log(res.data.result);
+          products = res.data.result;
+          //console.log(products);
+          return products;
+      });
+    },
+
+    getMyProducts: function() {
+      console.log(products);
+      return products;
     },
 
 
