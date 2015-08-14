@@ -522,3 +522,35 @@ a
 {
     width: 100%;
 }
+
+
+
+
+
+/*登陆开始*/
+.lbalndv{position:fixed; z-index:99;width:100%; height:100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');background:rgba(55,55,55,0.6);}
+.lbalnma{position:fixed; left:50%; margin-left:-633px; top:82px; z-index:99; width:1266px; height:1261px; background:#f3f2f5;border-radius:5px;}
+.lbalnbmbj{ width:469px;height:566px;position:absolute; left:0px; bottom:0px;}
+.lbalnbmbj>img{width:469px;height:566px;}
+.lbalncldbtn{width:38px; height:37px;position:absolute; top:43px; right:48px;}
+.lbalncldbtn>img{width:38px; height:37px;}
+.lbalnlogo{width:275px; height:288px;margin:-80px auto 0px auto;}
+.lbalnlogo>img{width:275px; height:288px;}
+.lbalnna{width:715px;height:89px; overflow:hidden; margin:74px auto 0px auto;}
+.lbalnnalef{width:123px;height:89px;float:left; background:#ffffff; border-radius:5px 0px 0px 5px;}
+.lbalnnalef>img{width:44px; height:44px; display:block; margin:auto; margin-top:22px;}
+.lbalnnarig{display:block;width:590px; height:89px !important;background:#ffffff; border-radius:0px 5px 5px 0px; float:right;padding-left:35px !important; line-height:80px !important; font-size:36px !important; color:#1d1d26 !important;}
+.lbalnpwd{width:715px;height:89px; overflow:hidden; margin:14px auto 0px auto;}
+.lbalnpwdlef{width:123px;height:89px;float:left; background:#ffffff; border-radius:5px 0px 0px 5px;}
+.lbalnpwdlef>img{width:40px; height:47px; display:block; margin:auto; margin-top:20px;}
+.lbalnpwdrig{display:block;width:590px; height:89px !important;background:#ffffff; border-radius:0px 5px 5px 0px; float:right;padding-left:35px !important; line-height:80px !important; font-size:36px !important; color:#1d1d26 !important;}
+.lbalndl{display:block;width:715px; height:118px;text-align:center;background:#e79700;margin:23px auto 0px auto;border-radius:5px;line-height:89px; font-size:36px !important; color:#ffffff !important;}
+.lbalnbm{width:715px; height:30px; margin:22px auto 0px auto;}
+.lbalnbmlf{float:left; font-size:30px; color:#76727d; line-height:30px;}
+.lbalnbrig{float:right;font-size:30px; color:#76727d; line-height:30px;}
+.lbalntc{ width:300px; height:195xp;position:fixed; left:50%; margin-left:-150px; top:40%; z-index:100;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#BC3C3B48', endColorstr='#BC3C3B48');background:rgba(60,59,72,0.74); border-radius:10px;}
+.lbalntc>em{ display:block;width:70px; height:70px; margin:30px auto;}
+.lbalntc>em>img{width:70px; height:70px;}
+.lbalntc>span{ display:block; text-align:center; width:270px; height:26px; margin:0px auto 41px auto;font-size:26px; color:#fff; line-height:26px;}
+/*登陆结束*/
+

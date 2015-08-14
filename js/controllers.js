@@ -24,9 +24,39 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership) {
+.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership,$http,$state) {
   $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
   $scope.categoryID = $stateParams.categoryID;
+  $scope.booking = function(product) {
+
+      if(Membership.state() == 'guest') {
+        
+        $state.go('common.login');
+      } else {
+        console.log("aaa");
+        var book = {
+          method: 'POST',
+          url: 'http://115.29.194.11:8080/ChiefFinancierService/api/customer/v1/customers/402881e54f1a699d014f1a69bba60002/bookings?productId='+product,
+          
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        $http(book).then(function(res){
+            console.log(res.data.successful);
+            if(res.data.successful) {
+              $state.go('main.index');
+            }
+            //console.log(res.data.result);
+            
+            //console.log(products);
+            //return products;
+        });
+      }
+    }
+
+
+
 
   //Membership.getProducts();
   $scope.products=[];

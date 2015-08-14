@@ -37,7 +37,7 @@ angular.module('starter.services', [])
       ok = false;
       var req = {
         method: 'POST',
-        url: 'http://115.29.178.80:8080/ChiefFinancierService/login?username='+
+        url: 'http://115.29.194.11:8080/ChiefFinancierService/login?username='+
               user.username + '&password=' + user.password,
         headers: {
          'Content-Type': 'application/json'
