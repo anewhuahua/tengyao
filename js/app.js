@@ -186,7 +186,31 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
       }
     }
   })
-  
+
+  // 查看预约状况
+  .state('bookings', {
+    url: '/bookings',
+    abstract: true,
+    templateUrl: 'templates/bookings.html'
+  })
+  .state('bookings.unassigned', {
+    url: '/unassigned',
+    views: {
+      'bookings': {
+        templateUrl: 'templates/bookings/unassigned.html',
+        controller: 'bookingsUnAssignedCtrl'
+      }
+    }
+  })
+  .state('bookings.assigned', {
+    url: '/assigned',
+    views: {
+      'bookings': {
+        templateUrl: 'templates/bookings/assigned.html',
+        controller: 'bookingsAssignedCtrl'
+      }
+    }
+  })
 
   // order
   .state('orders', {
