@@ -1,6 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('mainIndexCtrl', function($scope) {})
+.controller('mainIndexCtrl', function($scope, Rest) {
+  Rest.
+})
 
 
 .controller('customersCtrl', function($scope, $ionicSideMenuDelegate,$timeout) {
