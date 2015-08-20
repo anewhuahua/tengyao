@@ -554,3 +554,115 @@ a
 .lbalntc>span{ display:block; text-align:center; width:270px; height:26px; margin:0px auto 41px auto;font-size:26px; color:#fff; line-height:26px;}
 /*登陆结束*/
 
+
+
+
+/* 工具箱-开始 */
+.content{color:#333; width:100%;height:100%;overflow: hidden;padding:0.88rem 0rem 0.99rem 0rem; position:absolute;top:0;min-width:3.2rem;margin:0 auto;max-width:15.36rem;background: #f0f0f0;}
+.main1 {width: 100%;height: 100%;position:relative;overflow:auto;overflow-x:hidden;text-align:left;}
+
+.hgjxlf{width:0.42rem; height:0.42rem; position:absolute; left:0.57rem; top:0.24rem;}
+.hgjxlf>img{width:0.42rem; height:0.42rem;}
+.hgjxmid{display:block;width:3rem; height:0.42rem; margin:0.22rem auto; text-align:center; font-size:0.3rem; line-height:0.42rem; color:#426189;}
+.gjxnr1dv{width:100%; height:2.47rem; background:#e79700; overflow:hidden; position:relative; z-index:1;}
+.gjxnrtopyy{ width:100%; background:url(../teImg/ggqwq.png) repeat-x; height:0.08rem; position:absolute; left:0rem; top:0rem; z-index:2;}
+.gjxnrtopyy2{ width:100%; background:url(../teImg/ggqwq.png) repeat-x; height:0.08rem; position:absolute; left:0rem; top:0rem; z-index:5;}
+.gjxnrr2{width:4.8rem; height:2.47rem; float:right; border-right:1px #f8c800 solid; overflow:hidden; position:absolute; z-index:3; right:5.65rem; top:0rem;}
+.gjxnr3{width:5.65rem; height:2.47rem; border-left:1px #c35300 solid; float:right; overflow:hidden; position:absolute; z-index:3; right:0rem; top:0rem;}
+.gjxnr3>span,.gjxnr3>em{ display:block; width:5.08rem; text-align:center; color:#fff; overflow:hidden; margin:auto;}
+.gjxnr3>span{height:0.3rem;font-size:0.3rem; line-height:0.3rem; margin-top:0.5rem;}
+.gjxnr3>em{height:0.46rem;font-size:0.46rem; line-height:0.46rem; margin-top:0.19rem; padding-bottom:0.28rem; border-bottom:1px #c35300 solid;}
+.gjxnr3bmdv{width:5.08rem; height:0.5rem; margin:auto; overflow:hidden; padding-top:0.2rem; border-top:1px #f8c800 solid;}
+.gjxnr3bmdv>span,.gjxnr3bmdv>em{display:block; width:50%; float:left;text-align:center; font-size:0.24rem; line-height:0.24rem; color:#ffffff;}
+.gjxnrr2lef{width:1.14rem; height:1.14rem; margin:0.74rem 0rem 0rem 0.15rem; float:left; border-radius:50%; border:1px #e8e8e8 solid;}
+.gjxnrr2lef>img{ width:1.14rem; height:1.14rem;}
+.gjxnrr2rig{width:3rem; height:0.95rem; float:left; margin-top:0.89rem;margin-left:0.33rem;}
+.gjxnrr2rigp1{width:3rem; height:0.34rem;font-size:0.34rem; line-height:0.34rem; color:#ffffff;}
+.gjxnrr2rigp2{width:3rem; height:0.3rem; margin-top:0.25rem;}
+.gjxnrr2rigp2>span{width:0.29rem; height:0.29rem; float:left;}
+.gjxnrr2rigp2>span>img{width:0.29rem; height:0.29rem;}
+.gjxnrr2rigp2>em{float:left; width:1.2rem; height:0.29rem;font-size:0.29rem; line-height:0.29rem; color:#ffffff; margin-left:0.15rem;}
+.gjxnrr2rigp2>i{float:left; width:0.87rem; height:0.28rem;font-size:0.24rem; line-height:0.28rem; color:#ffffff; margin-left:0.12rem; background:#e00000; text-align:center;}
+
+.gfnleful{width:3.5rem;position:absolute; left:0rem; top:-0.01rem; z-index:4; background:#fff;}
+.gfnleful>li{width:4.5rem; border-top:0.01rem #f3f2f5 solid; border-bottom:0.01rem #f5f5f7 solid;}
+.gfnleful>li:first-child{ border-top:none;}
+.gfnulitp{width:4.5rem; height:1.1rem; padding-left:1.15rem; overflow:hidden;}
+.gfnulitp>span{float:left; width:2.1rem;height:1.2rem;font-size:0.36rem; line-height:1.2rem; color:#395983;}
+.gfnulitp>em{float:left;width:0.18rem;height:0.33rem; margin-top:0.45rem;}
+.gfnulitp>em>img{width:0.18rem;height:0.33rem;}
+.gfnulibm{padding-bottom:0.2rem;}
+.gfnulibm>a{display:block;width:4.5rem; height:0.6rem;font-size:0.3rem; line-height:0.6rem; color:#395983; padding-left:1.15rem;overflow:hidden;}
+.gnr2dadv{ width:100%;background:#f3f2f5;}
+.gnr2ma{ width:10.1rem; float:right; margin:0.4rem 0.35rem 0rem 0rem; padding-bottom:0.5rem;}
+.gnr2nra{ width:10.1rem; height:2.25rem; border-radius:0.05rem; background:#fff;}
+.gnr2nratop{ width:10.1rem; height:0.7rem; border-bottom:0.02rem #f3f2f5 solid; display:block;}
+.gnr2nratop>p{width:7rem; height:0.38rem; float:left; margin:0.16rem 0rem 0rem 0.4rem;}
+.gnr2nratop>p>em{width:0.35rem; height:0.38rem; float:left;}
+.gnr2nratop>p>em>img{width:0.35rem; height:0.38rem;}
+.gnr2nratop>p>span{float:left;width:6rem; height:0.38rem;font-size:0.3rem; line-height:0.3rem; color:#395983; margin-left:0.19rem; margin-top:0.03rem;}
+.gnr2nratop>i{ float:right; width:0.26rem; height:0.23rem; margin:0.25rem 0.5rem 0rem 0rem;}
+.gnr2nratop>i>img{width:0.26rem; height:0.23rem;}
+.gnr2nrabm{ width:100%; height:1.48rem;}
+.gnr2nrabm>li{width:25%; float:left;}
+.gnr2nrabm>li>a{display:block;}
+.gnr2nrabm>li>a>div{width:0.74rem; height:0.74rem; margin:0.2rem auto 0rem auto;}
+.gnr2nrabm>li>a>div>img{width:0.74rem; height:0.74rem;}
+.gnr2nrabm>li>a>em{ display:block;width:100%; height:0.26rem; overflow:hidden; margin:0.1rem auto;font-size:0.26rem;line-height:0.26rem; color:#395983; text-align:center;}
+.gnr2nrb{width:10.1rem; height:2rem; margin:0.12rem auto 0.06rem auto; background:#fff; border-radius:0.05rem;}
+.gnr2nrbtp{ width:100%; height:0.7rem;border-bottom:0.02rem #f3f2f5 solid;}
+.gnr2nrbtp>span{ float:left;width:7rem; height:0.7rem;font-size:0.3rem;line-height:0.7rem; color:#395983; padding-left:0.4rem;}
+.gnr2nrbtp>a{float:right; width:1.35rem; height:0.3rem; overflow:hidden; margin:0.21rem 0.5rem 0rem 0rem;}
+.gnr2nrbtp>a>em{font-size:0.24rem; color:#8e8a95; line-height:0.3rem; float:left;}
+.gnr2nrbtp>a>i{background:url(../teImg/lbanrgdlog.png) no-repeat; background-size:cover; width:0.26rem; height:0.23rem; float:right; margin-top:0.05rem;}
+.gnr2nrbbm{width:100%; height:1.3rem;}
+.gnr2nrblef{width:1.6rem; height:1.3rem; float:left;}
+.gnr2nrblef>div{ width:0.65rem; height:0.65rem; display:block; margin:0.2rem auto 0.07rem auto;}
+.gnr2nrblef>div>img{ width:0.65rem; height:0.65rem;}
+.gnr2nrblef>em{ display:block; width:1.6rem; height:0.2rem;font-size:0.18rem;line-height:0.18rem; color:#395983; text-align:center;}
+.gnr2nrbbmrig{ width:8.48rem; height:1.3rem; float:right;}
+.gnr2nrbbmrig>li{ float:left; margin:0rem 0.25rem}
+.gnr2nrbbmrig>li>span{display:block; margin:0.3rem auto;font-size:0.24rem;line-height:0.24rem; color:#395983; text-align:center;}
+.gnr2nrbbmrig>li>em{display:block;font-size:0.30rem;line-height:0.3rem; color:#e89440; text-align:center;}
+.gnr2nrctop{width:100%; height:0.7rem;background:#fff; border-radius:0.05rem; margin-top:0.3rem;}
+.gnr2nrctop>p{ width:7rem; float:left;}
+.gnr2nrctop>p>em{width:0.48rem; height:0.48rem; float:left; margin:0.11rem 0rem 0rem 0.3rem;}
+.gnr2nrctop>p>em>img{width:0.48rem; height:0.48rem;}
+.gnr2nrctop>p>span{float:left;width:6rem; height:0.3rem; font-size:0.3rem; line-height:0.3rem; color:#395983; margin-left:0.19rem; margin-top:0.2rem;}
+.gnr2nrctop>a{float:right; width:1.35rem; height:0.3rem; overflow:hidden; margin:0.21rem 0.5rem 0rem 0rem;}
+.gnr2nrctop>a>em{font-size:0.24rem; color:#8e8a95; line-height:0.3rem; float:left;}
+.gnr2nrctop>a>i{background:url(../teImg/lbanrgdlog.png) no-repeat; background-size:cover; width:0.26rem; height:0.23rem; float:right; margin-top:0.05rem;}
+.gnr2nrc1{ width:100%; margin-top:0.1rem; overflow:hidden; border-radius:0.05rem;background:#fff;}
+.gnr2nrc1lf{ width:1.9rem; min-height:1.9rem; float:left; border-right:0.02rem #f0eff2 solid;}
+.gnr2nrc1lf>span{display:block; width:0.92rem; height:0.92rem; margin:0.28rem auto 0.14rem auto; border-radius:50%;}
+.gnr2nrc1lf>span>img{width:0.92rem; height:0.92rem;}
+.gnr2nrc1lf>em{display:block;font-size:0.24rem; line-height:0.24rem; color:#395983; text-align:center;}
+.gnrnrcrig{width:8.2rem; min-height:1.9rem; float:left;}
+.gnr2nrcrig{height:0.76rem;display:block;font-size:0.3rem;line-height:0.76rem;color:#395983;padding-left:0.3rem;border-bottom:0.02rem #f0eff2 solid;}
+.gnr2nrcrig>em{font-size:0.42rem;color:#e89440;line-height:0.86rem;}
+.gnr2ncrgbm>span{width:2.5rem; float:left;font-size:0.3rem;line-height:0.36rem; color:#395983; text-align:center; float:left; margin-top:0.22rem;}
+.gnr2ncrgbm>p{width:5.6rem; float:left;font-size:0.26rem;line-height:0.36rem; color:#395983;margin-top:0.22rem; padding-bottom:0.2rem;}
+.gnr2ncrgbm>p>em{ display:block;}
+
+.gnr2nrctopd{width:100%; height:0.7rem;background:#fff; border-radius:0.05rem; margin-top:0.3rem; margin-bottom:0.1rem;}
+.gnr2nrctopd>p{width:7rem; float:left;}
+.gnr2nrctopd>p>em{width:0.49rem; height:0.45rem; float:left; margin:0.11rem 0rem 0rem 0.3rem;}
+.gnr2nrctopd>p>em>img{width:0.49rem; height:0.45rem;}
+.gnr2nrctopd>p>span{float:left;width:6rem; height:0.3rem; font-size:0.3rem; line-height:0.3rem; color:#395983; margin-left:0.19rem; margin-top:0.2rem;}
+.gnr2nrctopd>a{float:right; width:1.35rem; height:0.3rem; overflow:hidden; margin:0.21rem 0.5rem 0rem 0rem;}
+.gnr2nrctopd>a>em{font-size:0.24rem; color:#8e8a95; line-height:0.3rem; float:left;}
+.gnr2nrctopd>a>i{background:url(../teImg/lbanrgdlog.png) no-repeat; background-size:cover; width:0.26rem; height:0.23rem; float:right; margin-top:0.05rem;}
+.gnr2nre{width:100%; height:0.74rem; border-radius:0.05rem; background:#fff; margin-bottom:0.06rem; overflow:hidden;}
+.gnr2nre>span{width:0.81rem; height:0.32rem; float:left; background:#e79700;font-size:0.28rem; line-height:0.34rem; color:#fefefe; text-align:center;margin:0.23rem 0rem 0rem 0.28rem;}
+.gnr2nre>em{width:0.81rem; height:0.32rem; float:left; background:#e30000;font-size:0.28rem; line-height:0.34rem; color:#fefefe; text-align:center; margin:0.23rem 0rem 0rem 0.13rem;}
+.gnr2nre>i{float:left; font-size:0.3rem; line-height:0.3rem; color:#395983; margin:0.23rem 0rem 0rem 0.26rem;}
+
+.gjxtjcss{background:#e79700;}
+.gjxtjcss>span{color:#fff !important;}
+.gjxtjcss>em{display:none !important;}
+
+.curdis{ display:none !important;}
+/* 工具箱-结束 */
+
+
+

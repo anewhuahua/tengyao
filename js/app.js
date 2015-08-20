@@ -234,6 +234,15 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     abstract: true,
     templateUrl: 'templates/common.html'
   })
+  .state('common.person', {
+    url: '/person',
+    views: {
+      'common-person': {
+        templateUrl: 'templates/common/person.html'
+        
+      }
+    }
+  })
  .state('common.login', {
     url: '/login',
     views: {

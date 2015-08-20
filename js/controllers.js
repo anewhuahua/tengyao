@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('mainIndexCtrl', function($scope, Rest) {
-  Rest.
+  Rest.getPrivateFunds([]);
 })
 
 
@@ -115,7 +115,7 @@ angular.module('starter.controllers', [])
      // Code you want executed every time view is opened
      //console.log('Opened!')
     if (Membership.state() == 'guest') {
-      $state.go('common.login');
+      $state.go('common.person');
     }
     // $ionicSideMenuDelegate.toggleRight();
   })
