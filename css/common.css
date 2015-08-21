@@ -558,7 +558,9 @@ a
 
 
 /* 工具箱-开始 */
-.content{color:#333; width:100%;height:100%;overflow: hidden;padding:0.88rem 0rem 0.99rem 0rem; position:absolute;top:0;min-width:3.2rem;margin:0 auto;max-width:15.36rem;background: #f0f0f0;}
+
+/*
+.content{color:#333; width:100%;height:100%;overflow: hidden;padding:0.88rem 0rem 0.99rem 0rem; position:absolute;top:0;min-width:3.2rem;margin:0 auto;max-width:15.36rem;background: #f0f0f0; }
 .main1 {width: 100%;height: 100%;position:relative;overflow:auto;overflow-x:hidden;text-align:left;}
 
 .hgjxlf{width:0.42rem; height:0.42rem; position:absolute; left:0.57rem; top:0.24rem;}
@@ -661,7 +663,7 @@ a
 .gjxtjcss>span{color:#fff !important;}
 .gjxtjcss>em{display:none !important;}
 
-.curdis{ display:none !important;}
+.curdis{ display:none !important;}*/
 /* 工具箱-结束 */
 
 
