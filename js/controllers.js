@@ -137,44 +137,85 @@ angular.module('starter.controllers', [])
   $scope.data =  {
     hideMain: false
   };
+  $scope.verifyCode = "tyson";
   $scope.win = {
     login: true,
     register_1: false,
     register_2: false,
     main: false,
-    stub: true
-  }
+    stub: true,
+    notify: false
+  };
 
   if (Rest.getProfile() == 'visitor') {
     console.log('visitor');
   } else {
   }
 
-
-
+  $scope.hideNotify = function() {
+    $scope.win.notify = false;
+  }
+  $scope.hideFrontWin = function() {
+    $scope.win.login = false,
+    $scope.win.register_1 = false,
+    $scope.win.register_2 = false,
+    $scope.win.main = false,
+    $scope.win.stub = true,
+    $scope.win.notify = false
+  }
+  $scope.backLogin = function() {
+    $scope.win.login = true,
+    $scope.win.register_1 = false,
+    $scope.win.register_2 = false,
+    $scope.win.main = false,
+    $scope.win.stub = true,
+    $scope.win.notify = false
+  }
   $scope.login = function(user) {
     $scope.win.stub = true;
     Rest.login(user.username, user.password, function(){
       //todo
       console.log("login callback");
+      $scope.win.main=true;
+      $scope.win.stub=false;
+      $scope.win.login = false;
     });
   }
+
 
   $scope.register_1 = function() {
     $scope.win.stub = true;
     $scope.win.login = false;
     $scope.win.register_1 = true;
   }
-  $scope.register_2 = function() {
-    $scope.win.register_1 = false;
-    $scope.win.register_2 = true;
+
+  $scope.askVerifyCode = function(phone) {
+    console.log("ask");
+    Rest.askVerifyCode(phone, function(){
+      $scope.verifyCode = Rest.getVerifyCode();
+      console.log("tyson"+$scope.verifyCode);
+    });
   }
-  $scope.register_3 = function(){
+
+  $scope.register_2 = function(code) {
+    if ($scope.verifyCode == code) {
+      $scope.win.register_1 = false;
+      $scope.win.register_2 = true;
+
+    } else {
+      console.log("not fit");
+      $scope.win.notify = true;
+    }
+  }
+  $scope.register_3 = function(name,password,code){
     //todo Rest Register
-    $scope.win.register_1 = false;
-    $scope.win.register_2 = false;
-    $scope.win.stub = false;
-    $scope.win.main = true;
+    Rest.register(name,password,code,function(){
+      $scope.win.register_1 = false;
+      $scope.win.register_2 = false;
+      $scope.win.stub = false;
+      $scope.win.main = true;
+    });
+   
   }
   /*
   $scope.tyson = function() {

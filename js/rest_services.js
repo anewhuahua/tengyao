@@ -3,6 +3,7 @@ angular.module('rest.services', [])
 .factory('Rest', function($http) {
   //var products = [];
   var client = "visitor";
+  var verifyCode = "tyson";
 
   return {
     getProfile: function() {
@@ -29,13 +30,66 @@ angular.module('rest.services', [])
         console.log("login");
       });*/
       $http(req).then(function(res){  
-          console.log(res);
+          //console.log(res);
+          //console.log(res.headers('Pragma'));
+          pragma = res.headers('Pragma');
+          pragma = pragma.replace("Id:","");
+          console.log(pragma);
           cb();
           console.log("tyson login");
           return;
       });
     },
 
+    getVerifyCode: function() {
+      return verifyCode;
+    },
+    askVerifyCode: function(phone, cb) {
+      var req = {
+        method: 'POST',
+        url: 'http://115.29.194.11:8080/ChiefFinancierService/api/common/v1/verificationcodes?phone='
+               + phone,
+        headers: {
+         'Content-Type': 'application/json',
+         'Pragma': 'verifyCode:true'
+        }
+      };
+      $http(req).then(function(res){  
+          //console.log(res);
+          //console.log(res.headers('Pragma'));
+          pragma = res.headers('Pragma');
+          
+          verifyCode = pragma;
+          console.log(verifyCode);
+          cb();
+          console.log("tyson ask verify");
+          return;
+      });
+      
+    },
+    register: function(name, password, code, cb) {
+      var req = {
+        method: 'POST',
+        url: 'http://115.29.194.11:8080/ChiefFinancierService/api/customer/v1/customers?verifyCode='
+               + code,
+        headers: {
+         'Content-Type': 'application/json',
+        },
+
+        data: {
+          "class": "com.fpsb.chief.financier.persistence.entity.staff.Customer",
+          "username": "panpan123",
+          "password": "pwd4panpan",
+          "phone": "1234566789"
+        }
+      };
+
+      $http(req).then(function(res){  
+          cb();
+          console.log("tyson register");
+          return;
+      });
+    },
 
 
     getProduct: function(type, pid) {

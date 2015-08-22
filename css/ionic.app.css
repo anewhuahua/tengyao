@@ -892,7 +892,8 @@ $dark:                            #444 !default;
     z-index: 100;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#BC3C3B48', endColorstr='#BC3C3B48');
     background: rgba(60, 59, 72, 0.74);
-    border-radius: 10px; }
+    border-radius: 10px;
+    z-index: 50; }
   .common-person-view .lbalntc > em {
     display: block;
     width: 0.7rem;
