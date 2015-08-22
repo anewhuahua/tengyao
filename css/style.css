@@ -1,10 +1,6 @@
 /* Empty. Add your own CSS if you like */
 
-.row {
-  display: flex;
-  flex-direction: row;
-  height: 150px;
-}
+
 .slider {
   height: 100%;
 }
@@ -24,14 +20,19 @@
 }
 
 .bar-header {
-   height: 80px; /*just an example*/
+   height:90px;
+
 
 }
 .bar-header .title {
-   height: 80px;
-   line-height: 80px;
+   height: 90px;
+   line-height: 150px;
 }
 
 .has-header {
-   top: 80px;
+   top: 90px;
 }
+
+
+
+

@@ -1,7 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('mainIndexCtrl', function($scope, Rest) {
-  Rest.getPrivateFunds([]);
+.controller('mainIndexCtrl', function($scope, Rest, $ionicModal) {
+  Rest.getProducts({type:'privatefunds'});
+  //Rest.login('customer','password');
+
 })
 
 
@@ -25,9 +27,25 @@ angular.module('starter.controllers', [])
          
 })
 
-.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership,$http,$state) {
+.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership,$http,$state, $ionicModal) {
+  
+  $ionicModal.fromTemplateUrl('templates/modal/login.html', {
+    scope: $scope,
+    animation: 'slide-in-up',
+    backdropClickToClose: true
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
   $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
   $scope.categoryID = $stateParams.categoryID;
+  /*
   $scope.booking = function(product) {
 
       if(Membership.state() == 'guest') {
@@ -54,9 +72,7 @@ angular.module('starter.controllers', [])
             //return products;
         });
       }
-    }
-
-
+    }*/
 
 
   //Membership.getProducts();
@@ -70,55 +86,128 @@ angular.module('starter.controllers', [])
   }, 300);
 
 
-  /*
-  [{
-    id: 0,
-    name: '盈泰磐海对接新泽量化',
-    detail: 'You on your way?',
-    category: '1'
-  }, {
-    id: 1,
-    name: '盈泰磐海对接新泽量化',
-    detail: 'Hey, it\'s me',
-    category: '1'
-  }, {
-    id: 2,
-    name: '盈泰磐海对接新泽量化',
-    detail: 'I should buy a boat',
-    category: '1'
-  }, {
-    id: 4,
-    name: '盈泰磐海对接新泽量化',
-    detail: 'I should buy a boat',
-    category: '1'
-  }, {
-    id: 5,
-    name: '盈泰磐海对接新泽量化',
-    detail: 'I should buy a boat',
-    category: '2'
-  },  {
-    id: 6,
-    name: '盈泰磐海对接新泽量化',
-    detail: 'I should buy a boat',
-    category: '3'
-  }];*/
+  
+})
+.controller('Login1Ctrl', function($scope, $ionicModal, Rest) {
+  //console.log($scope.data.hideMain);
+  
+  $scope.login = function(user) {
+    Rest.login(user.username, user.password, function(){
+      console.log("login callback");
+      $scope.modal.hide();
+      //$scope.data.hideMain=false;
+    });
+    //$scope.modal.hide();
+    //$scope.data.hideMain=false;
+  };
+  $scope.hideModal = function() {
+    $scope.modal.hide();
+    //$scope.data.hideMain=false;
 
+  };
+  $scope.removeModal = function() {
+    $scope.modal.remove();
+    //$scope.data.hideMain=false;
+  };
+})
+.controller('LoginCtrl', function($scope, $ionicModal, Rest) {
+  //console.log($scope.data.hideMain);
+  
+  $scope.login = function(user) {
+    Rest.login(user.username, user.password, function(){
+      console.log("login callback");
+      $scope.modal.hide();
+      //$scope.data.hideMain=false;
+    });
+    //$scope.modal.hide();
+    //$scope.data.hideMain=false;
+  };
+  $scope.hideModal = function() {
+    $scope.modal.hide();
+    //$scope.data.hideMain=false;
+
+  };
+  $scope.removeModal = function() {
+    $scope.modal.remove();
+    //$scope.data.hideMain=false;
+  };
 })
 
+.controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, Rest) {
+  $scope.data =  {
+    hideMain: false
+  };
+  $scope.win = {
+    login: true,
+    register_1: false,
+    register_2: false,
+    main: false,
+    stub: true
+  }
+
+  if (Rest.getProfile() == 'visitor') {
+    console.log('visitor');
+  } else {
+  }
 
 
-.controller('mainToolBoxCtrl', function($scope, $state, Membership) {
+
+  $scope.login = function(user) {
+    $scope.win.stub = true;
+    Rest.login(user.username, user.password, function(){
+      //todo
+      console.log("login callback");
+    });
+  }
+
+  $scope.register_1 = function() {
+    $scope.win.stub = true;
+    $scope.win.login = false;
+    $scope.win.register_1 = true;
+  }
+  $scope.register_2 = function() {
+    $scope.win.register_1 = false;
+    $scope.win.register_2 = true;
+  }
+  $scope.register_3 = function(){
+    //todo Rest Register
+    $scope.win.register_1 = false;
+    $scope.win.register_2 = false;
+    $scope.win.stub = false;
+    $scope.win.main = true;
+  }
+  /*
+  $scope.tyson = function() {
+    console.log("hahah");
+  }
+  $ionicModal.fromTemplateUrl('templates/modal/login.html', {
+    scope: $scope,
+    animation: 'slide-in-up',
+    backdropClickToClose: false,
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };*/
+  
+  
   console.log('toolbox');
+  //var myElement= document.getElementById('main1');
+  //angular.element(myElement).triggerHandler('click');
+     //angular.element(myElement).triggerHandler('hide');
+  //console.log("11");
   //Membership.login();
   
-  $scope.$on('$ionicView.enter', function() {
-     // Code you want executed every time view is opened
-     //console.log('Opened!')
-    if (Membership.state() == 'guest') {
-      $state.go('common.person');
-    }
-    // $ionicSideMenuDelegate.toggleRight();
-  })
+  /*$scope.$on('$ionicView.enter', function() {
+  
+
+     var myElement= document.getElementById('main1');
+     angular.element(myElement).triggerHandler('click');
+     angular.element(myElement).triggerHandler('hide');
+     console.log("11");
+
+  });*/
 })
 
 .controller('commonLoginCtrl', function($scope, $state, Membership) {
