@@ -3,6 +3,10 @@ angular.module('starter.controllers', [])
 .controller('mainIndexCtrl', function($scope, Rest, $ionicModal) {
   Rest.getProducts({type:'privatefunds'});
   //Rest.login('customer','password');
+  $scope.showProduct = function() {
+    $scope.tyson.tyson = true;
+  }
+
 
 })
 
@@ -20,6 +24,20 @@ angular.module('starter.controllers', [])
   //});
 })
 
+.controller('mainCtrl', function($scope) {
+  $scope.tyson = {
+    tyson:false
+  };
+  $scope.showProduct = function() {
+    $scope.tyson.tyson = true;
+  }
+  $scope.closeProduct = function() {
+    console.log("close");
+    $scope.tyson.tyson = false;
+  }
+
+})
+
 .controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams) {
   $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
   $scope.categoryID = $stateParams.categoryID;
@@ -28,7 +46,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership,$http,$state, $ionicModal) {
-  
+  //$scope.tyson.tyson = "true";
+  $scope.showProduct = function() {
+    $scope.tyson.tyson = true;
+  }
+  $scope.closeProduct = function() {
+    $scope.tyson.tyson = false;
+  }
+
   $ionicModal.fromTemplateUrl('templates/modal/login.html', {
     scope: $scope,
     animation: 'slide-in-up',
@@ -88,28 +113,7 @@ angular.module('starter.controllers', [])
 
   
 })
-.controller('Login1Ctrl', function($scope, $ionicModal, Rest) {
-  //console.log($scope.data.hideMain);
-  
-  $scope.login = function(user) {
-    Rest.login(user.username, user.password, function(){
-      console.log("login callback");
-      $scope.modal.hide();
-      //$scope.data.hideMain=false;
-    });
-    //$scope.modal.hide();
-    //$scope.data.hideMain=false;
-  };
-  $scope.hideModal = function() {
-    $scope.modal.hide();
-    //$scope.data.hideMain=false;
 
-  };
-  $scope.removeModal = function() {
-    $scope.modal.remove();
-    //$scope.data.hideMain=false;
-  };
-})
 .controller('LoginCtrl', function($scope, $ionicModal, Rest) {
   //console.log($scope.data.hideMain);
   
@@ -133,19 +137,30 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, Rest) {
-  $scope.data =  {
-    hideMain: false
-  };
-  $scope.verifyCode = "tyson";
+.controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, $timeout, Rest) {
+
   $scope.win = {
     login: true,
     register_1: false,
     register_2: false,
     main: false,
     stub: true,
-    notify: false
+    notify: false,
+    disable: false
   };
+  
+
+
+  $scope.verifyCode = "";
+  $scope.user = {
+    verifyWords : '发送验证码',
+    username: '',
+    password: '',
+    verifyCode: '',
+    notify: '',
+    statusVeiryCode: false
+  };
+
 
   if (Rest.getProfile() == 'visitor') {
     console.log('visitor');
@@ -184,13 +199,46 @@ angular.module('starter.controllers', [])
 
 
   $scope.register_1 = function() {
+    $scope.user.verifyWords = "发送验证码";
     $scope.win.stub = true;
     $scope.win.login = false;
     $scope.win.register_1 = true;
   }
 
   $scope.askVerifyCode = function(phone) {
+    $scope.user.statusVeiryCode = true;
+    $scope.win.disable = true;
     console.log("ask");
+    /*
+    promise = $timeout(function(cnt){
+      $timeout(
+      $scope.user.verifyWords = cnt;
+      cnt = cnt-1;
+    }, 1000);*/
+
+    
+    //timeout
+    var loopVerifyWords = function(cnt) 
+    {
+      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+      console.log("timeout "+cnt);
+      $scope.user.verifyWords = cnt;
+      if (cnt == 0) {
+        $scope.user.statusVeiryCode = false;
+        $scope.win.disable = false;
+        $scope.user.verifyWords = "发送验证码";
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+      $scope.$on('$ionicView.leave',function(){
+        $scope.win.disable = false;
+        $timeout.cancel(promise);
+      }); 
+    }; 
+
+    loopVerifyWords(30);
+
+  
     Rest.askVerifyCode(phone, function(){
       $scope.verifyCode = Rest.getVerifyCode();
       console.log("tyson"+$scope.verifyCode);
@@ -198,7 +246,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.register_2 = function(code) {
-    if ($scope.verifyCode == code) {
+    if ($scope.verifyCode == code && code != "") {
       $scope.win.register_1 = false;
       $scope.win.register_2 = true;
 

@@ -3,8 +3,6 @@
 <ion-view class="common-main-view">
   <ion-nav-title>
        <div class="logotop"><img src="img/logotop.png" title="" alt="" /></div>
-         
-  
   </ion-nav-title>
 
 
@@ -17,9 +15,7 @@
 
   	<ion-content>
 
-      <button class="button button-icon ion-compose" ng-click="openModal()">
-        </button>
-
+      <!--
 
   		<div class="bar-subheader bar-stable">
 			<div class="button-bar">
@@ -27,7 +23,7 @@
 				<a class="button button-clear">按收益</a>
 				<a class="button button-clear">按时间</a>
 			</div>
-		</div>
+		</div>-->
 
      
       <!--
@@ -40,30 +36,39 @@
 	    	</a>
 		  </div>
     -->
-       
 
-        <div class="list">
+
+  
+       
+<div class="main1"><!-- 中间内容开始 -->  
+    <div class="list">
               <div class="item">
               <!--<a ng-repeat="product in products |filter:{category: categoryID}" href="#/product/detail/12">-->
-              <a ng-repeat="product in products" href="#">  
+              <a ng-repeat="product in products" ng-click="showProduct()">  
 
-                   <div class="lbanr2uldv1"><span>推荐</span> <em>热销</em> <i>{{product.issuer}}</i> <em ng-click="booking(product.id)">预约</em></div>
+                   <div class="lbanr2uldv1"><span>推荐</span> <em>热销</em> <i>{{product.issuer}}</i> <!--<em ng-click="booking(product.id)">预约</em>--></div>
 
                    <div class="lbanr2uldv2  item-icon-right">
                         <div class="lbar2v2lef"> <em>{{product.anticipation*100}}%</em> <span>预期年化</span> </div>
                         <div class="lbar2v2lef"> <em>{{product.period}}天</em> <span>理财期限</span> </div>
-                        <div class="lbar2v2rig">
+                        <div class="lbar2v2lef"> <em>{{product.quota/10000}} 万元</em> <span>目标规模</span> </div>
+                        <!--<div class="lbar2v2rig">
                           <span>目标规模<em>{{product.quota/10000}}</em>万元</span>
                           <span>认购费用<em>{{product.threshold/10000}}</em>万 起</span>
                           <span>剩余时间<em>24</em>天</span>
-                        </div>
+                        </div>-->
 
                    </div>
                    
                 </a>
 
+
+
+
               </div>
           </div>
+</div>
+      
 
 
   </ion-content>

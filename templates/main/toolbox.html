@@ -9,7 +9,7 @@
 
   <div class="lbalntc" ng-if="win.notify" ng-click="hideNotify()">
     <em><img src="teImg/lbatsk.png"></em>
-    <span>验证码错误</span>     
+    <span>{{user.notify}}</span>     
   </div>
 
 <!--登陆开始-->
@@ -51,7 +51,7 @@
 
 
 
-<div class="zcdv" ng-if="win.register_1"><!-- 注册开始 -->
+<div class="zcdv" ng-if="win.register_1" ><!-- 注册开始 -->
   
   <div class="zcmain1">
      <div class="zclfbj"><img src="teImg/zclefbj.png" /></div><!-- 左边背景 -->
@@ -63,15 +63,14 @@
          <form class="zcwjfrm">
            <div class="zctel">
              <span>手机号码</span>
-             <input type="text" placeholder="请输入手机号码"  ng-model="user.phone"/> 
+             <input type="text" placeholder="请输入手机号码"  ng-model="user.phone" ng-disabled="win.disable"/ > 
            </div> 
            <div class="zcyzm">
              <span>验 证 码</span>
-             <input type="text" placeholder="请输入验证码" ng-model="user.verifyCode"/> 
-
-             <em ng-click='askVerifyCode(user.phone)'>发送验证码</em>
+             <input type="text" placeholder="请输入验证码" ng-model="user.verifyCode" /> 
+             <button ng-click='askVerifyCode(user.phone)' ng-disabled="win.disable">{{user.verifyWords}}</button>
            </div>
-           <input  type="submit" class="zcwjnext" value="下一步" ng-click="register_2(user.verifyCode)"/>
+           <input  type="submit" class="zcwjnext" value="下一步" ng-click="register_2(user.verifyCode)" />
            <em class="zcwjbz">首席金服将对您的信息严格保密，不会在任何地方泄露您的号码</em>
             
              
@@ -87,8 +86,8 @@
   
   <div class="zcmain1">
      <div class="zclfbj"><img src="teImg/zclefbj.png" /></div><!-- 左边背景 -->
-     <div class="zcback"><img src="teImg/zcback.png" /></div><!-- 返回 -->
-         <div class="zcclos"><<!--img src="teImg/zcclose.png" />--></div><!-- 关闭 -->
+     <div class="zcback" ng-click="backLogin()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
+         <div class="zcclos"><!--img src="teImg/zcclose.png" />--></div><!-- 关闭 -->
          <span class="zcwjtit1">注册新用户</span>
          
          

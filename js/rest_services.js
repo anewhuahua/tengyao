@@ -68,6 +68,8 @@ angular.module('rest.services', [])
       
     },
     register: function(name, password, code, cb) {
+      console.log("register:" + name);
+      console.log("register:" + password);
       var req = {
         method: 'POST',
         url: 'http://115.29.194.11:8080/ChiefFinancierService/api/customer/v1/customers?verifyCode='
@@ -78,8 +80,8 @@ angular.module('rest.services', [])
 
         data: {
           "class": "com.fpsb.chief.financier.persistence.entity.staff.Customer",
-          "username": "panpan123",
-          "password": "pwd4panpan",
+          "username": name,
+          "password": password,
           "phone": "1234566789"
         }
       };

@@ -44,7 +44,8 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
   .state('main', {
     url: '/main',
     abstract: true,
-    templateUrl: 'templates/main.html'
+    templateUrl: 'templates/main.html',
+    controller: 'mainCtrl'
   })
 
   .state('main.index', {
