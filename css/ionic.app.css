@@ -927,7 +927,9 @@ $dark:                            #444 !default;
   /*登陆开始*/
   /*登陆结束*/
   /* 私募产品详情页-开始 */
-  /* 私募产品详情页-结束*/ }
+  /* 私募产品详情页-结束*/
+  /* 底层产品详情页-开始 */
+  /* 底层产品详情页-结束 */ }
   .common-main-view ul, .common-main-view li {
     list-style-type: none; }
   .common-main-view input {
@@ -1707,6 +1709,95 @@ $dark:                            #444 !default;
     color: #fff;
     text-align: center;
     margin-bottom: 0.2rem; }
+  .common-main-view .cqdclef {
+    width: 28%;
+    height: 100%;
+    float: left; }
+  .common-main-view .cqdcrig {
+    width: 70%;
+    height: 100%;
+    float: right; }
+  .common-main-view .cplbanr2ul {
+    width: 90%;
+    height: 100%;
+    margin: 0.2rem auto; }
+  .common-main-view .cplbanr2ul > li {
+    width: 100%;
+    height: 2.5rem;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 0.2rem; }
+  .common-main-view .cqlbanr2uldv1 {
+    width: 100%;
+    height: 0.8rem;
+    overflow: hidden;
+    border-bottom: 0.02rem #f3f2f5 solid;
+    padding-top: 0.3rem; }
+  .common-main-view .cqlbanr2uldv1 > span, .common-main-view .cqlbanr2uldv1 > em {
+    width: 0.78rem;
+    height: 0.32rem;
+    float: left;
+    font-size: 0.28rem;
+    color: #fff;
+    line-height: 0.32rem;
+    text-align: center;
+    border-radius: 0.03rem; }
+  .common-main-view .cqlbanr2uldv1 > span {
+    margin-left: 0.3rem;
+    background: #e79700; }
+  .common-main-view .cqlbanr2uldv1 > em {
+    margin-left: 0.13rem;
+    background: #e30000; }
+  .common-main-view .cqlbanr2uldv1 > i {
+    float: left;
+    width: 5rem;
+    height: 0.32rem;
+    overflow: hidden;
+    margin-left: 0.26rem;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.3rem;
+    font-style: normal; }
+  .common-main-view .cqlbanr2uldv2 {
+    width: 92.5%;
+    height: 0.8rem;
+    margin: 0.24rem auto 0rem auto;
+    overflow: hidden; }
+  .common-main-view .cqlbar2v2lef {
+    width: 30%;
+    height: 0.8rem;
+    float: left;
+    text-align: center; }
+  .common-main-view .cqlbar2v2lef > em {
+    display: block;
+    font-size: 0.42rem;
+    color: #e89440;
+    line-height: 0.42rem; }
+  .common-main-view .cqlbar2v2lef > span {
+    display: block;
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.28rem;
+    margin-top: 0.05rem; }
+  .common-main-view .cqlbar2v2rig {
+    width: 40%;
+    height: 0.8rem;
+    float: left; }
+  .common-main-view .cqlbar2v2rig > span {
+    display: block;
+    font-size: 0.2rem;
+    line-height: 0.26rem;
+    color: #395983; }
+  .common-main-view .cqlbar2v2rig > span > em {
+    color: #e89440;
+    display: inline-block;
+    padding: 0rem 0.02rem 0rem 0.24rem; }
+  .common-main-view .cqlbar2v2bm {
+    width: 92.5%;
+    height: 0.11rem;
+    margin: 0.24rem auto 0rem auto; }
+  .common-main-view .cqlbar2v2bm > img {
+    width: 100%; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */
