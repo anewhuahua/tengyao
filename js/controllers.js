@@ -1,5 +1,6 @@
 angular.module('starter.controllers', [])
 
+
 .controller('customersCtrl', function($scope, $ionicSideMenuDelegate,$timeout) {
   
   //$scope.$on('$ionicView.enter', function() {
@@ -12,6 +13,7 @@ angular.module('starter.controllers', [])
    
   //});
 })
+
 
 .controller('examCtrl', function($scope) {
   $scope.win = {
@@ -65,6 +67,7 @@ angular.module('starter.controllers', [])
   }
   
 })
+
 
 
 
@@ -144,17 +147,21 @@ angular.module('starter.controllers', [])
   
 })
 
+
 .controller('mainMenuCtrl', function($scope, $state, MultipleViewsManager){
   $scope.selectItem = function( item) {
       MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
   }
 })
 
+
 .controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Rest) {
+
 
   MultipleViewsManager.updated(function(params) {
     $scope.data.toolbox = params.msg;
   });
+
 
 
   $scope.doRefresh = function() {
