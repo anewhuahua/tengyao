@@ -3,7 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 'starter.services', 'rest.services'])
+angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 'starter.services', 
+                           'rest.services', 'storage.service'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -78,6 +79,10 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
   .state('main.toolbox', {
     url: '/toolbox',
     views: {
+      'main-menu': {
+         templateUrl: 'templates/main/menu.html',
+      },
+
       'main-toolbox': {
          templateUrl: 'templates/main/toolbox.html',
          controller: 'mainToolBoxCtrl'
@@ -244,15 +249,7 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
       }
     }
   })
- .state('common.login', {
-    url: '/login',
-    views: {
-      'common-login': {
-        templateUrl: 'templates/common/login.html',
-        controller: "commonLoginCtrl"
-      }
-    }
-  })
+
  .state('common.register', {
     url: '/register',
     views: {
