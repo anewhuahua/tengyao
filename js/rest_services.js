@@ -4,40 +4,28 @@ angular.module('rest.services', [])
   //var products = [];
   var client = "visitor";
   var verifyCode = "tyson";
+  var domain="http://115.29.194.11:8080/";
 
   return {
+    //stub
     getProfile: function() {
       return client;
     },
 
-    login: function(name, password, cb) {
+    login: function(name, password, successHandler, errorHandler) {
+      var id = "";
       var req = {
         method: 'POST',
-        url: 'http://115.29.194.11:8080/ChiefFinancierService/login?username='+
+        url: domain+'ChiefFinancierService/login?username='+
               name + '&password=' + password,
         headers: {
          'Content-Type': 'application/json'
         }
       };
-      /*
-      $http(req).success(function(data){
-        console.log(data);
-        client = "data.id"
-        return;
-      }).error(function(res, status){
-        console.error('error', status, res);
-      }).finally(function(){
-        console.log("login");
-      });*/
       $http(req).then(function(res){  
-          //console.log(res);
-          //console.log(res.headers('Pragma'));
-          pragma = res.headers('Pragma');
-          pragma = pragma.replace("Id:","");
-          console.log(pragma);
-          cb();
-          console.log("tyson login");
-          return;
+          successHandler(res);
+      }, function(res){
+          errorHandler(res);
       });
     },
 

@@ -1,16 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('mainIndexCtrl', function($scope, Rest, $ionicModal) {
-  Rest.getProducts({type:'privatefunds'});
-  //Rest.login('customer','password');
-  $scope.showProduct = function() {
-    $scope.tyson.tyson = true;
-  }
-
-
-})
-
-
 .controller('customersCtrl', function($scope, $ionicSideMenuDelegate,$timeout) {
   
   //$scope.$on('$ionicView.enter', function() {
@@ -24,20 +13,69 @@ angular.module('starter.controllers', [])
   //});
 })
 
-.controller('mainCtrl', function($scope) {
-  $scope.tyson = {
-    tyson:false
-  };
-  $scope.showProduct = function() {
-    $scope.tyson.tyson = true;
+.controller('examCtrl', function($scope) {
+  $scope.win = {
+    result: false
   }
-  $scope.closeProduct = function() {
-    console.log("close");
-    $scope.tyson.tyson = false;
+})
+.controller('examCustomerCtrl', function($scope) {
+  $scope.showResult = function() {
+    $scope.win.result = true;
   }
-
 })
 
+.controller('mainCtrl', function($scope, Main) {
+  /*
+  console.log(Storage.getObject('info'));
+  Storage.getObject('info', {
+    name: 'Thoughts',
+    text: 'Today was a good day'
+  });*/
+
+  $scope.data = {
+    person: {},
+    popup: '',
+    toolbox:'index'
+  }
+  $scope.data.person.role="customer";
+  if($scope.data.person.id) {
+    console.log('aa');
+  }else {
+    console.log('bb');
+  }
+
+  Main.login('customer','password1');
+  /*
+  var login = Storage.getObject('login');
+  if(login) {
+    Rest.login(login.username, login.password, function(){
+      var profile = Rest.getProfile();
+      Storage.setObject('profile', );
+      Storage.setObject('login', login)
+    });
+  }
+  */
+
+
+  $scope.showProduct = function() {
+    $scope.data.popup = 'privateFund';
+  }
+  $scope.closeProduct = function() {
+    $scope.data.popup = '';
+  }
+  
+})
+
+
+
+
+
+
+.controller('mainIndexCtrl', function($scope, Rest, $ionicModal) {
+  //Rest.getProducts({type:'privatefunds'});
+  //Rest.login('customer','password');
+
+})
 .controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams) {
   $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
   $scope.categoryID = $stateParams.categoryID;
@@ -46,14 +84,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership,$http,$state, $ionicModal) {
-  //$scope.tyson.tyson = "true";
-  $scope.showProduct = function() {
-    $scope.tyson.tyson = true;
-  }
-  $scope.closeProduct = function() {
-    $scope.tyson.tyson = false;
-  }
+  $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
+  $scope.categoryID = $stateParams.categoryID;
 
+  /*
   $ionicModal.fromTemplateUrl('templates/modal/login.html', {
     scope: $scope,
     animation: 'slide-in-up',
@@ -67,10 +101,6 @@ angular.module('starter.controllers', [])
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
-
-  $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
-  $scope.categoryID = $stateParams.categoryID;
-  /*
   $scope.booking = function(product) {
 
       if(Membership.state() == 'guest') {
@@ -114,42 +144,34 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('LoginCtrl', function($scope, $ionicModal, Rest) {
-  //console.log($scope.data.hideMain);
-  
-  $scope.login = function(user) {
-    Rest.login(user.username, user.password, function(){
-      console.log("login callback");
-      $scope.modal.hide();
-      //$scope.data.hideMain=false;
-    });
-    //$scope.modal.hide();
-    //$scope.data.hideMain=false;
-  };
-  $scope.hideModal = function() {
-    $scope.modal.hide();
-    //$scope.data.hideMain=false;
-
-  };
-  $scope.removeModal = function() {
-    $scope.modal.remove();
-    //$scope.data.hideMain=false;
-  };
+.controller('mainMenuCtrl', function($scope, $state, MultipleViewsManager){
+  $scope.selectItem = function( item) {
+      MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
+  }
 })
 
-.controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, $timeout, Rest) {
+.controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Rest) {
 
-  $scope.win = {
-    login: true,
-    register_1: false,
-    register_2: false,
-    main: false,
-    stub: true,
-    notify: false,
-    disable: false
-  };
+  MultipleViewsManager.updated(function(params) {
+    $scope.data.toolbox = params.msg;
+  });
+
+
+  $scope.doRefresh = function() {
+    console.log('tyson');
+    $scope.$broadcast('scroll.refreshComplete');
+  }
+
+  $scope.loadMore = function() {
+    console.log('load more');
+    //$scope.$broadcast('scroll.infiniteScrollComplete');
+  }
+
+
+
+  $scope.data.win='';
   
-
+  //$scope.data.win='toolbox';
 
   $scope.verifyCode = "";
   $scope.user = {
@@ -167,33 +189,15 @@ angular.module('starter.controllers', [])
   } else {
   }
 
-  $scope.hideNotify = function() {
-    $scope.win.notify = false;
-  }
-  $scope.hideFrontWin = function() {
-    $scope.win.login = false,
-    $scope.win.register_1 = false,
-    $scope.win.register_2 = false,
-    $scope.win.main = false,
-    $scope.win.stub = true,
-    $scope.win.notify = false
-  }
   $scope.backLogin = function() {
-    $scope.win.login = true,
-    $scope.win.register_1 = false,
-    $scope.win.register_2 = false,
-    $scope.win.main = false,
-    $scope.win.stub = true,
-    $scope.win.notify = false
+    $scope.data.win = 'login'
   }
   $scope.login = function(user) {
     $scope.win.stub = true;
     Rest.login(user.username, user.password, function(){
       //todo
       console.log("login callback");
-      $scope.win.main=true;
-      $scope.win.stub=false;
-      $scope.win.login = false;
+      $scope.data.win='toolbox';
     });
   }
 
@@ -265,21 +269,7 @@ angular.module('starter.controllers', [])
     });
    
   }
-  /*
-  $scope.tyson = function() {
-    console.log("hahah");
-  }
-  $ionicModal.fromTemplateUrl('templates/modal/login.html', {
-    scope: $scope,
-    animation: 'slide-in-up',
-    backdropClickToClose: false,
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };*/
-  
+
   
   console.log('toolbox');
   //var myElement= document.getElementById('main1');

@@ -3,7 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 'starter.services', 'rest.services'])
+angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 'starter.services', 
+                           'rest.services', 'storage.service', 'main.service'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,7 +41,7 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
 
   $stateProvider
   
-  // setup an abstract state for the tabs directive
+  // main
   .state('main', {
     url: '/main',
     abstract: true,
@@ -75,16 +76,56 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
   })
 
 
-  .state('main.toolbox', {
-    url: '/toolbox',
+  .state('main.my', {
+    url: '/my',
     views: {
-      'main-toolbox': {
-         templateUrl: 'templates/main/toolbox.html',
+      'main-my-menu': {
+         templateUrl: 'templates/main/my_menu.html',
+         controller: 'mainMenuCtrl'
+      },
+
+      'main-my-toolbox': {
+         templateUrl: 'templates/main/my_toolbox.html',
          controller: 'mainToolBoxCtrl'
       }
     }
   })
-  
+
+  .state('main.toolbox', {
+    url: '/toolbox',
+    views: {
+      'main-consultant-menu': {
+         templateUrl: 'templates/main/consultant_menu.html',
+      },
+
+      'main-consultant-toolbox': {
+         templateUrl: 'templates/main/consultant_toolbox.html',
+         controller: 'mainToolBoxCtrl'
+      }
+    }
+  })
+
+  // exam
+  .state('exam', {
+    url: '/exam',
+    abstract: true,
+    templateUrl: 'templates/exam.html',
+    controller: 'examCtrl'
+  })
+
+  .state('exam.customer', {
+    url: '/customer',
+    views: {
+      'exam-menu': {
+         templateUrl: 'templates/exam/exam_menu.html'
+      },
+      'exam-customer': {
+         templateUrl: 'templates/exam/exam_customer.html',
+         controller: 'examCustomerCtrl'
+      }
+    }
+  })
+
 
   // product
   .state('product', {
@@ -244,15 +285,7 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
       }
     }
   })
- .state('common.login', {
-    url: '/login',
-    views: {
-      'common-login': {
-        templateUrl: 'templates/common/login.html',
-        controller: "commonLoginCtrl"
-      }
-    }
-  })
+
  .state('common.register', {
     url: '/register',
     views: {
