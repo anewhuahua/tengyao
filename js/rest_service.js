@@ -1,4 +1,4 @@
-angular.module('rest.services', [])
+angular.module('rest.service', [])
 
 .factory('Rest', function($http) {
   //var products = [];
@@ -26,6 +26,37 @@ angular.module('rest.services', [])
           successHandler(res);
       }, function(res){
           errorHandler(res);
+      });
+    },
+
+    getProducts: function(param, successHandler, errorHandler, finallyHandler) {
+      type = param.type
+      state  = param.state || 'active';
+      offset = param.offset || '0';
+      limit  = param.limit || '25'
+
+      var req = {
+          method: 'GET',
+          url: domain+'ChiefFinancierService/api/common/v1/' +
+                type + '?' +
+                'state=' + state + '&' +
+                'offset=' + offset + '&' +
+                'limit=' + limit,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+      $http(req).success(function(data){
+        //console.log(data);
+        //products = data.result;
+        successHandler(data);
+
+      }).error(function(res, status){
+        //console.error('error', status, res);
+        errorHandler(res, status);
+      }).finally(function(){
+        finallyHandler();
       });
     },
 
@@ -83,36 +114,9 @@ angular.module('rest.services', [])
 
 
     getProduct: function(type, pid) {
-    },
-
-    getProducts: function(param) {
-      type = param.type
-      state  = param.state || 'active';
-      offset = param.offset || '0';
-      limit  = param.limit || '25'
-
-      var req = {
-          method: 'GET',
-          url: 'http://115.29.194.11:8080/ChiefFinancierService/api/common/v1/' +
-                type + '?' +
-                'state=' + state + '&' +
-                'offset=' + offset + '&' +
-                'limit=' + limit,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-
-      $http(req).success(function(data){
-        //console.log(data);
-        products = data.result;
-        return products;
-      }).error(function(res, status){
-        console.error('error', status, res);
-      }).finally(function(){
-        console.log("getPrivateFunds");
-      });
     }
+
+    
 
   }
 

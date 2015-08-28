@@ -37,6 +37,7 @@ angular.module('starter.controllers', [])
   $scope.data = {
     person: {},
     popup: '',
+    categories: [],
     toolbox:'index'
   }
   $scope.data.person.role="customer";
@@ -46,7 +47,7 @@ angular.module('starter.controllers', [])
     console.log('bb');
   }
 
-  Main.login('customer','password1');
+  Main.login('consultant','password');
   /*
   var login = Storage.getObject('login');
   if(login) {
@@ -70,27 +71,87 @@ angular.module('starter.controllers', [])
 
 
 
+.controller('mainIndexCtrl', function($scope, Main) {
 
-
-
-
-.controller('mainIndexCtrl', function($scope, Rest, $ionicModal) {
   //Rest.getProducts({type:'privatefunds'});
   //Rest.login('customer','password');
-
+  $scope.data.categories = Main.getCategories();
 })
-.controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams) {
-  $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
-  $scope.categoryID = $stateParams.categoryID;
-  $scope.selectedCategory = $scope.categoryID;
-         
+.controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams, Main) {
+  $scope.data.categories = Main.getCategories();
+  $scope.selectedCategory = $stateParams.categoryID;
 })
 
-.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams, Membership,$http,$state, $ionicModal) {
-  $scope.categoryNames = ["", "公募基金", "私募基金", "信托产品", "组合产品", "服务类产品"]
-  $scope.categoryID = $stateParams.categoryID;
+.controller('mainProductsCtrl', function($scope,$ionicPopover,$stateParams,$state, Main) {
+  $scope.data = {
+    products:[],
+    category:{},
+    more:true
+  };
 
-  /*
+  var cid = $stateParams.categoryID;
+
+  Main.getProducts({'cid':cid},
+  function(cata){
+    $scope.data.products=cata.products;
+    $scope.data.category=cata;
+   
+  }, function(){
+ 
+  }, function(){
+
+  });
+
+  $scope.loadMore = function(){
+    setTimeout(function(){
+       Main.getProducts({'cid':cid, 'page':$scope.data.category.page+1}
+      , function(cata){
+        if(!cata) {
+          $scope.data.more=false;
+          return;
+        }
+        $scope.data.products=cata.products;
+        $scope.data.category=cata;
+      },function(status){
+        console.log(status);
+        if(status==0) {
+          console.log('无网络连接');
+          $scope.data.more=false;
+        }
+      },function(){
+        console.log("infinite scroll stop");
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+      });
+     }, 1000);
+   
+  }
+
+  $scope.doRefresh = function() {
+    setTimeout(function(){
+      console.log('refresh');
+     
+      Main.getProducts({
+        'cid':cid, 'page':1
+        },function(cata){
+          $scope.data.products=cata.products;
+          $scope.data.category=cata;
+        },function(){
+
+        },function(){
+          console.log("refresh stop");
+          $scope.$broadcast('scroll.refreshComplete');
+           $scope.data.more=true;
+        });
+    }, 1000);
+  }
+  //Rest.getProducts({type:'privatefunds'});
+
+
+/*
+  setTimeout(function(){
+     $scope.products = Membership.getMyProducts();       
+  }, 300);
+
   $ionicModal.fromTemplateUrl('templates/modal/login.html', {
     scope: $scope,
     animation: 'slide-in-up',
@@ -132,19 +193,6 @@ angular.module('starter.controllers', [])
       }
     }*/
 
-
-  //Membership.getProducts();
-  $scope.products=[];
-  console.log("tyson");
-  Membership.getProducts();
-  
-
-  setTimeout(function(){
-     $scope.products = Membership.getMyProducts();       
-  }, 300);
-
-
-  
 })
 
 
