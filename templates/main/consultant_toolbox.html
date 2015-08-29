@@ -2,15 +2,22 @@
 
       <ion-nav-title>
            <div class="logotop"><img src="img/logotop.png" title="" alt="" /></div>
-         
-  
       </ion-nav-title>
-  <ion-content>
 
 
-<ion-refresher pulling-text="下拉刷新..." on-refresh="doRefresh()"></ion-refresher>
+<ion-content ng-switch on="consultant.win">
 
-<div class="main1" ng-if="data.person.role=='consultant'">
+
+       <ion-refresher
+              refreshing-text="数据正在加载中..."
+              pulling-icon="ion-ios-arrow-down"
+              spinner="bubbles"
+              pulling-text="下拉刷新"
+              on-refresh="doRefresh()">
+      </ion-refresher>
+
+<!--index-->
+<div class="main1" ng-switch-when="index">
 
         <div class="gnr2dadv"><!--内容右侧开始-->
                         
@@ -36,7 +43,7 @@
               <div class="gjxnrr2lef"><img src="teImg/ghnr1lef.png" /></div>
               <div class="gjxnrr2rig">
                 <p class="gjxnrr2rigp1">李明<span>先生</span>,<em>下午</em>好</p>
-                <p class="gjxnrr2rigp2"><span><img src="teImg/gjxnrtaa.png" /></span> <em>白金用户</em> <i>已认证</i></p>
+                <p class="gjxnrr2rigp2"><span><img src="teImg/gjxnrtaa.png" /></span> <em>理财师</em> <i>已认证</i></p>
               </div>
             </div>
             <!-- 内容1左边部分结束 -->
@@ -258,18 +265,165 @@
 
                 
               </div>
-            </div><!--内容右侧结束-->
-           
+            </div><!--内容右侧结束-->   
 </div> <!--main1-->
+<!--index-->
 
+<!--预约列表开始-->
+<div class="main1" ng-switch-when='bookings'>
+             <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div><!-- 内容top阴影 -->
+                
+
+                <div class="gnr2ma"> 
+                  
+                    <div class="wdyydv"><!-- 我的预约-s -->
+                      
+                       <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
+                       <div class="sdyybmdv">
+                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                           <div class="sdyyr">
+                                <p class="wdyyrp1">
+                                   <span>王海先生 </span>
+                                   <em>白金用户</em>
+                                   <i>已认证</i>
+                                   <b>电话：1300004500 </b>
+                                </p>
+                                
+                                <div class="wdyynr2v">
+                                   <span>[保险]阳光分红型人寿 </span>
+                                   <em>返佣比2%</em>
+                                   <a href=""><span>查看详情</span> <em></em></a>
+                                </div>
+                           </div>
+                       </div>
+
+                    </div><!-- 我的预约-e -->
+                    
+                    <div class="wdyydv"><!-- 我的预约-s -->
+                      
+                       <div class="wdyydvtop"><span>2015 / 08 / 28</span>  </div>
+                       <div class="sdyybmdv">
+                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                           <div class="sdyyr">
+                                <p class="wdyyrp1">
+                                   <span>王海先生 </span>
+                                   <em>白金用户</em>
+                                   <i>已认证</i>
+                                   <b>电话：1300004500 </b>
+                                </p>
+                                
+                                <div class="wdyynr2v">
+                                   <span>[保险]阳光分红型人寿 </span>
+                                   <em>返佣比2%</em>
+                                   <a href=""><span>查看详情</span> <em></em></a>
+                                </div>
+                           </div>
+                       </div>
+
+                    </div><!-- 我的预约-e -->
+                    
+                    <div class="wdyydv"><!-- 我的预约-s -->
+                      
+                       <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
+                       <div class="sdyybmdv">
+                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                           <div class="sdyyr">
+                                <p class="wdyyrp1">
+                                   <span>王海先生 </span>
+                                   <em>白金用户</em>
+                                   <i>已认证</i>
+                                   <b>电话：1300004500 </b>
+                                </p>
+                                
+                                <div class="wdyynr2v">
+                                   <span>[保险]阳光分红型人寿 </span>
+                                   <em>返佣比2%</em>
+                                   <a href=""><span>查看详情</span> <em></em></a>
+                                </div>
+                           </div>
+                       </div>
+
+                    </div><!-- 我的预约-e -->
+                    
+                    <div class="wdyydv"><!-- 我的预约-s -->
+                      
+                       <div class="wdyydvtop"><span>2015 / 08 / 28</span>  </div>
+                       <div class="sdyybmdv">
+                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                           <div class="sdyyr">
+                                <p class="wdyyrp1">
+                                   <span>王海先生 </span>
+                                   <em>白金用户</em>
+                                   <i>已认证</i>
+                                   <b>电话：1300004500 </b>
+                                </p>
+                                
+                                <div class="wdyynr2v">
+                                   <span>[保险]阳光分红型人寿 </span>
+                                   <em>返佣比2%</em>
+                                   <a href=""><span>查看详情</span> <em></em></a>
+                                </div>
+                           </div>
+                       </div>
+
+                    </div><!-- 我的预约-e -->
+                    
+                    <div class="wdyydv"><!-- 我的预约-s -->
+                      
+                       <div class="wdyydvtop"><span>2015 / 08 / 28</span> <em>[未服务]</em> </div>
+                       <div class="sdyybmdv">
+                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                           <div class="sdyyr">
+                                <p class="wdyyrp1">
+                                   <span>王海先生 </span>
+                                   <em>白金用户</em>
+                                   <i>已认证</i>
+                                   <b>电话：1300004500 </b>
+                                </p>
+                                
+                                <div class="wdyynr2v">
+                                   <span>[保险]阳光分红型人寿 </span>
+                                   <em>返佣比2%</em>
+                                   <a href=""><span>查看详情</span> <em></em></a>
+                                </div>
+                           </div>
+                       </div>
+
+                    </div><!-- 我的预约-e -->
+                    
+                    <div class="wdyydv"><!-- 我的预约-s -->
+                      
+                       <div class="wdyydvtop"><span>2015 / 08 / 28</span>  </div>
+                       <div class="sdyybmdv">
+                           <div class="wdyyf"><img src="teImg/ghnr1lef.png" /></div>
+                           <div class="sdyyr">
+                                <p class="wdyyrp1">
+                                   <span>王海先生 </span>
+                                   <em>白金用户</em>
+                                   <i>已认证</i>
+                                   <b>电话：1300004500 </b>
+                                </p>
+                                
+                                <div class="wdyynr2v">
+                                   <span>[保险]阳光分红型人寿 </span>
+                                   <em>返佣比2%</em>
+                                   <a href=""><span>查看详情</span> <em></em></a>
+                                </div>
+                           </div>
+                       </div>
+
+                    </div><!-- 我的预约-e -->
+                   
+                
+                </div>
+            </div><!--内容右侧结束-->
+</div>
+<!--预约列表完成-->
     
     
-  
-  <ion-infinite-scroll
-    on-infinite="loadMore()" 
-    immediate-check="false"
-    distance="1%"><p>小金奋力加载中...</p>
-  </ion-infinite-scroll>
+
 
     
   </ion-content>

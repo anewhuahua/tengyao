@@ -44,6 +44,8 @@ angular.module('ionicMultipleViews', [])
 	.factory('MultipleViewsManager', function ($rootScope, $state) {
 		var viewCallbacks = {};
 		var pendingCalls = [];
+		var viewCallbacks1 = {};
+		var pendingCalls1 = [];
 		return {
 			updateView: function (viewName, params) {
 				if (!this.isActive()) {
@@ -64,6 +66,8 @@ angular.module('ionicMultipleViews', [])
 			isActive: function () {
 				return $state.current.views && Object.keys($state.current.views).length > 1;
 			},
+
+
 			updated: function (callback) {
 				viewCallbacks[$state.current.name] = callback;
 				
@@ -72,6 +76,34 @@ angular.module('ionicMultipleViews', [])
 					if (call.stateName === $state.current.name) {
 						callback(call.params);
 						pendingCalls.splice(i, 1);
+						return;
+					}
+				}
+			},
+			updateViewLeft: function (viewName, params) {
+				if (!this.isActive()) {
+					throw 'Cannot use updateView in a single view layout. Please make sure that you are in a multiple views layout using ViewManager.isActive()';
+				}
+				
+				var views = $state.current.views;
+				var callback = viewCallbacks1[$state.current.name];
+				if (callback) {
+					callback(params);
+				} else {
+					pendingCalls1.push({
+						stateName: $state.current.name,
+						params: params
+					});
+				}
+			},
+			updatedLeft: function (callback) {
+				viewCallbacks1[$state.current.name] = callback;
+				
+				for (var i = 0; i < pendingCalls1.length; i++) {
+					var call = pendingCalls1[i];
+					if (call.stateName === $state.current.name) {
+						callback(call.params);
+						pendingCalls1.splice(i, 1);
 						return;
 					}
 				}

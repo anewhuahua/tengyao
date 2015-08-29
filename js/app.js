@@ -82,12 +82,12 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     views: {
       'main-my-menu': {
          templateUrl: 'templates/main/my_menu.html',
-         controller: 'mainMenuCtrl'
+         controller: 'CustomerMenuCtrl'
       },
 
       'main-my-toolbox': {
          templateUrl: 'templates/main/my_toolbox.html',
-         controller: 'mainToolBoxCtrl'
+         controller: 'mainCustomerCtrl'
       }
     }
   })
@@ -97,11 +97,12 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     views: {
       'main-consultant-menu': {
          templateUrl: 'templates/main/consultant_menu.html',
+         controller: 'ConsultantMenuCtrl'
       },
 
       'main-consultant-toolbox': {
          templateUrl: 'templates/main/consultant_toolbox.html',
-         controller: 'mainToolBoxCtrl'
+         controller: 'mainConsultantCtrl'
       }
     }
   })
@@ -125,177 +126,10 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
          controller: 'examCustomerCtrl'
       }
     }
-  })
-
-
-  // product
-  .state('product', {
-    url: '/product',
-    abstract: true,
-    templateUrl: 'templates/product.html'
-  })
-  
-
-  .state('product.detail', {
-    url: '/detail/:productID',
-    views: {
-      'product-detail': {
-         templateUrl: 'templates/product/detail.html',
-         controller: 'productDetailCtrl'
-      }
-    }
-  })
-
-  // customers
-  .state('customers', {
-    url: '/customers',
-    abstract: true,
-    templateUrl: 'templates/customers.html',
-    controller: 'customersCtrl'
-  })
-
-
-  .state('customers.appointment', {
-    url: '/appointment',
-    views: {
-      'customers-all': {
-        templateUrl: 'templates/customers/appointment.html',
-        controller: 'customersAppointmentCtrl'
-      }
-    }
-  })
-  .state('customers.serve', {
-    url: '/serve',
-    views: {
-      'customers-all': {
-        templateUrl: 'templates/customers/serve.html',
-        controller: 'customersServeCtrl'
-      }
-    }
-  })
-  .state('customers.all', {
-    url: '/all',
-    views: {
-      'customers-all': {
-        templateUrl: 'templates/customers/all.html',
-        controller: 'customersAllCtrl'
-      }
-    }
-  })
-
-  // money
-  .state('money', {
-    url: '/money',
-    abstract: true,
-    templateUrl: 'templates/money.html'
-  })
-  .state('money.history', {
-    url: '/history',
-    views: {
-      'money-history': {
-        templateUrl: 'templates/money/history.html'
-      }
-    }
-  })
-  .state('money.paid', {
-    url: '/paid',
-    views: {
-      'money-history': {
-        templateUrl: 'templates/money/paid.html'
-      }
-    }
-  })
-  .state('money.unpaid', {
-    url: '/unpaid',
-    views: {
-      'money-history': {
-        templateUrl: 'templates/money/unpaid.html'
-      }
-    }
-  })
-
-  // booking
-  .state('booking', {
-    url: '/booking',
-    abstract: true,
-    templateUrl: 'templates/booking.html'
-  })
-  .state('booking.detail', {
-    url: '/detail',
-    views: {
-      'booking-detail': {
-        templateUrl: 'templates/booking/detail.html',
-        controller: 'bookingDetailCtrl'
-      }
-    }
-  })
-
-  // 查看预约状况
-  .state('bookings', {
-    url: '/bookings',
-    abstract: true,
-    templateUrl: 'templates/bookings.html'
-  })
-  .state('bookings.unassigned', {
-    url: '/unassigned',
-    views: {
-      'bookings': {
-        templateUrl: 'templates/bookings/unassigned.html',
-        controller: 'bookingsUnAssignedCtrl'
-      }
-    }
-  })
-  .state('bookings.assigned', {
-    url: '/assigned',
-    views: {
-      'bookings': {
-        templateUrl: 'templates/bookings/assigned.html',
-        controller: 'bookingsAssignedCtrl'
-      }
-    }
-  })
-
-  // order
-  .state('orders', {
-    url: '/orders',
-    abstract: true,
-    templateUrl: 'templates/orders.html'
-  })
-  .state('orders.all', {
-    url: '/all',
-    views: {
-      'orders-all': {
-        templateUrl: 'templates/orders/all.html',
-        controller: 'ordersAllCtrl'
-      }
-    }
-  })
-
-
-  .state('common', {
-    url: '/common',
-    abstract: true,
-    templateUrl: 'templates/common.html'
-  })
-  .state('common.person', {
-    url: '/person',
-    views: {
-      'common-person': {
-        templateUrl: 'templates/common/person.html'
-        
-      }
-    }
-  })
-
- .state('common.register', {
-    url: '/register',
-    views: {
-      'common-login': {
-        templateUrl: 'templates/common/register.html',
-        controller: "commonRegisterCtrl"
-      }
-    }
   });
+
+
+  
 
 
   $urlRouterProvider.otherwise('/main/index');

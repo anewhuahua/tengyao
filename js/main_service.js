@@ -76,7 +76,7 @@ angular.module('main.service',[])
                               Storage.setObject(key, tmp);
                               successHandler(tmp);
                             } else {
-
+                                // todo !important: 就是那种length 不等于step的时候如何存储
                             }
                           }, 
                           function(res, status){

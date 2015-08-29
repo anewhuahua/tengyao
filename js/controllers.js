@@ -47,7 +47,7 @@ angular.module('starter.controllers', [])
     console.log('bb');
   }
 
-  Main.login('consultant','password');
+  Main.login('customer','password');
   /*
   var login = Storage.getObject('login');
   if(login) {
@@ -116,7 +116,7 @@ angular.module('starter.controllers', [])
         console.log(status);
         if(status==0) {
           console.log('无网络连接');
-          $scope.data.more=false;
+          //$scope.data.more=false;
         }
       },function(){
         console.log("infinite scroll stop");
@@ -196,30 +196,79 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('mainMenuCtrl', function($scope, $state, MultipleViewsManager){
-  $scope.selectItem = function( item) {
-      MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
+.controller('ConsultantMenuCtrl', function($scope, $state, MultipleViewsManager){
+  $scope.data = {
+    selectedItem : "index"
   }
+  $scope.selectItem = function(item) {
+      MultipleViewsManager.updateView('main-consultant-toolbox', {msg: item});
+      $scope.data.selectedItem = item;
+  }
+  $scope.showItem = function(item){
+    var arr = $scope.data.selectedItem.split("-");
+    return (arr[0] == item)
+  }
+
 })
 
-
-.controller('mainToolBoxCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Rest) {
-
+.controller('mainConsultantCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Rest) {
+  $scope.consultant = {
+    win: 'index'
+  };
 
   MultipleViewsManager.updated(function(params) {
-    $scope.data.toolbox = params.msg;
+    $scope.consultant.win = params.msg;
   });
-
-
-
   $scope.doRefresh = function() {
     console.log('tyson');
     $scope.$broadcast('scroll.refreshComplete');
   }
 
-  $scope.loadMore = function() {
-    console.log('load more');
-    //$scope.$broadcast('scroll.infiniteScrollComplete');
+})
+
+
+
+.controller('CustomerMenuCtrl', function($scope, $state, MultipleViewsManager){
+  $scope.data = {
+    selectedItem : "index"
+  }
+  MultipleViewsManager.updatedLeft(function(params) {
+    console.log(params);
+    $scope.data.selectedItem = params.msg;
+  });
+
+  $scope.selectItem = function(item) {
+      MultipleViewsManager.updateView('main-my-toolbox', {msg: item});
+      $scope.data.selectedItem = item;
+  }
+  $scope.showItem = function(item){
+    var arr = $scope.data.selectedItem.split("-");
+    return (arr[0] == item)
+  }
+})
+
+
+.controller('mainCustomerCtrl', function($scope, $state, $ionicModal, $timeout, MultipleViewsManager, Rest) {
+  $scope.customer = {
+    win: 'index',
+    orders: 'orders'
+  };
+
+  MultipleViewsManager.updated(function(params) {
+    var arr = params.msg.split("-");
+    $scope.customer.orders = params.msg;
+    $scope.customer.win = arr[0];
+  });
+
+  $scope.selectPage = function(item) {            
+    MultipleViewsManager.updateViewLeft('main-my-toolbox', {msg: item});
+    $scope.customer.orders = item;
+    var arr = item.split("-");
+    $scope.customer.win = arr[0];
+  }
+  $scope.doRefresh = function() {
+    console.log('tyson');
+    $scope.$broadcast('scroll.refreshComplete');
   }
 
 

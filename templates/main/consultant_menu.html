@@ -4,77 +4,48 @@
   <ion-content>
 
               
-            <ul class="gfnleful" ng-if="data.person.role=='consultant'"><!-- 左边大分类开始-->
+            <ul class="gfnleful"><!-- 左边大分类开始-->
               <div class="gjxnrtopyy2"></div><!-- 内容top阴影 --> 
                
               <li>
-                <div class="gfnulitp gjxtjcss">
-                  <span>账户总览</span>
+                <div class="gfnulitp" ng-click="selectItem('index')" ng-class="{gjxtjcss: data.selectedItem=='index'}">
+                  <a>账户总览</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
               <li>
-                <div class="gfnulitp">
-                  <span>全部订单</span>
+                <div class="gfnulitp" ng-click="selectItem('bookings')" ng-class="{gjxtjcss : data.selectedItem=='bookings'}">
+                  <a>客户预约</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-                <div class="gfnulibm">
-                  <a href="">待报备</a>
-                  <a href="">审核中</a>
-                  <a href="">已完成</a>
-                  <a href="">历史订单</a>
+                <div class="gfnulibm" ng-if="showItem('bookings')">
+                  <a href="" ng-click="selectItem('bookings-new')" ng-class="{gjxtjcss : data.selectedItem=='bookings-new'}">新预约</a>
+                  <a href="" ng-click="selectItem('bookings-served')" ng-class="{gjxtjcss : data.selectedItem=='bookings-served'}">已服务预约</a>
+                </div>
+              </li>
+             <li>
+                <div class="gfnulitp" ng-click="selectItem('money')" ng-class="{gjxtjcss : data.selectedItem=='money'}">
+                  <a>佣金管理</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
+                </div>
+                <div class="gfnulibm" ng-if="showItem('money')">
+                  <a href="" ng-click="selectItem('money-unpaid')" ng-class="{gjxtjcss : data.selectedItem=='money-unpaid'}">未结算佣金</a>
+                  <a href="" ng-click="selectItem('money-paid')" ng-class="{gjxtjcss : data.selectedItem=='money-paid'}">已结算佣金</a>
+                </div>
+              </li>
+              <li>
+                <div class="gfnulitp">
+                  <a>订单跟踪</a>
+                  <em><img src="teImg/glefultprg.png" /></em>
                 </div>
               </li>
              <li>
                 <div class="gfnulitp">
-                  <span>资金管理</span>
+                  <a>工作规划</a>
                   <em><img src="teImg/glefultprg.png" /></em>
                 </div>
-                <div class="gfnulibm">
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                </div>
               </li>
-              <li>
-                <div class="gfnulitp">
-                  <span>全部订单</span>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm">
-                  <a href="">待报备</a>
-                  <a href="">审核中</a>
-                  <a href="">已完成</a>
-                  <a href="">历史订单</a>
-                </div>
-              </li>
-             <li>
-                <div class="gfnulitp">
-                  <span>资金管理</span>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm">
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                  <a href="">待报备</a>
-                </div>
-              </li>
-              <li>
-                <div class="gfnulitp">
-                  <span>全部订单</span>
-                  <em><img src="teImg/glefultprg.png" /></em>
-                </div>
-                <div class="gfnulibm">
-                  <a href="">待报备</a>
-                  <a href="">审核中</a>
-                  <a href="">已完成</a>
-                  <a href="">历史订单</a>
-                </div>
-              </li>
+             
     
             
             </ul><!-- 左边大分类结束-->
