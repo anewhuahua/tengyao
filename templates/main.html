@@ -136,13 +136,20 @@ navigation history that also transitions its views in and out.
     
     
     <div class="prxqbm"><!-- 私募产品详情页弹窗主体 底部部分-->
+      <a href="" class="prxqaa2" ng-click="addBooking()">预约产品</a>
       <a href="" class="prxqaa1">立即申购</a>
-      <a href="" class="prxqaa2">预约产品</a>
     </div><!-- 私募产品详情页弹窗主体 底部部分-->
 
   </div><!-- 私募产品详情页弹窗主体 --> 
 </div><!-- 私募产品详情页弹窗结束 -->
 
+
+<div class="zctsypr" ng-switch-when="booking-success" ng-click="closePopup()"><!-- 注册成功提示-开始 -->
+      <div class="zctsylog"><img src="teImg/rctslog.png" /></div>
+      <span>您的预约已成功提交!！</span>
+      <span>您的理财师将马上与您联系，请保持电话通畅。！</span>
+</div><!-- 注册成功提示-结束 -->
+    
 
 <!--登陆开始-->
   <div class="lbalndv" ng-switch-when="login">

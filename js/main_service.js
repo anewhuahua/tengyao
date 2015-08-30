@@ -1,12 +1,14 @@
 angular.module('main.service',[])
 .factory('Main', function(Rest, Storage) {
   var id = null;
+  var role = null;
   var categories = [
     {id: 1, name: "公募基金",  key:'publicfunds', image:'teImg/lbanr1img1.png', page:0, products:[]},
     {id: 2, name: "私募基金",  key:'privatefunds',image:'teImg/lbanr1img2.png', page:0, products:[]},
     {id: 3, name: "信托产品",  key:'trusts',      image:'teImg/lbanr1img3.png', page:0, products:[]},
     {id: 4, name: "保险产品",  key:'insurances',  image:'teImg/lbanr1img4.png', page:0, products:[]}
   ];
+  var bookings = [];
 
   return {
     login: function(username,password) {
@@ -21,8 +23,20 @@ angular.module('main.service',[])
       if (username  && password) {  // if both two appear
         Rest.login(username, password, function(res){
           pragma = res.headers('Pragma');
-          pragma = pragma.replace("Id:","");
+          console.log(pragma);
+          arr = pragma.split('},');
+          arr = arr[0].split(',');
+          pragma = arr[0].replace('{"id":"', "");
+          pragma = pragma.replace('"', "");
+          /*
+          pragma = pragma.replace('[', '');
+          pragma = pragma.replace(']', '');
+          pragma = JSON.parse({'id':'1'});*/
+          
+          console.log(pragma)
+          //pragma = pragma.replace("Id:","");
           id = pragma;
+          //role = pragma.roles;
           Storage.setObject('login', {'username': username, 'password': password});
           console.log('main.service login success:' + id);
         }, function(res){
@@ -89,6 +103,23 @@ angular.module('main.service',[])
         console.error('main.service getProducts error: no cid '+cid);
       }
     },
+
+    addBooking: function(pid, successHandler, errorHandler, finallyHandler) {
+      if(id) {
+        Rest.addBooking(id, pid, function(data){
+          console.log(data);
+          successHandler(data);
+        }, function(res, status){
+          console.error('main.service addBooking error', status, res);
+          errorHandler;
+        }, 
+        finallyHandler);
+      } else {
+        console.log('addboking failed for no customer id');
+      }
+    },
+
+
     getCategories: function(){
       return categories;
     },
@@ -99,6 +130,8 @@ angular.module('main.service',[])
         }
       }
     }
+
+
 
 
   }

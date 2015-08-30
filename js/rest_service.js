@@ -60,6 +60,27 @@ angular.module('rest.service', [])
       });
     },
 
+
+
+    addBooking: function(cid, pid, successHandler, errorHandler, finallyHandler) {
+      var req = {
+          method: 'POST',
+          url: domain+'ChiefFinancierService/api/customer/v1/customers/' + cid + '/bookings?productId=' + pid,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        console.log(cid);
+      $http(req).success(function(data){
+        successHandler(data);
+      }).error(function(res, status){
+        errorHandler(res, status);
+      }).finally(function(){
+        finallyHandler();
+      });
+    },
+
+
     getVerifyCode: function() {
       return verifyCode;
     },

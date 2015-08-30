@@ -38,7 +38,8 @@ angular.module('starter.controllers', [])
     person: {},
     popup: '',
     categories: [],
-    toolbox:'index'
+    toolbox:'index',
+    looking_product:null
   }
   $scope.data.person.role="customer";
   if($scope.data.person.id) {
@@ -60,11 +61,28 @@ angular.module('starter.controllers', [])
   */
 
 
-  $scope.showProduct = function() {
+  $scope.showProduct = function(pid) {
     $scope.data.popup = 'privateFund';
+    $scope.data.looking_product = pid;
+    console.log("looking product: "+pid);
   }
   $scope.closeProduct = function() {
     $scope.data.popup = '';
+    $scope.data.looking_product = null;
+  }
+
+  $scope.closePopup = function() {
+    $scope.data.popup = '';
+  }
+  $scope.addBooking= function() {
+    if($scope.data.looking_product) {
+      console.log('booking add');
+      Main.addBooking($scope.data.looking_product, function(data){
+        $scope.data.popup = 'booking-success';
+      });
+    } else {
+      console.log("no product id for booking");
+    }
   }
   
 })
