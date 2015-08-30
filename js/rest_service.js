@@ -12,7 +12,7 @@ angular.module('rest.service', [])
       return client;
     },
 
-    login: function(name, password, successHandler, errorHandler) {
+    login: function(name, password, successHandler, errorHandler,finallyHandler) {
       var id = "";
       var req = {
         method: 'POST',
@@ -26,6 +26,9 @@ angular.module('rest.service', [])
           successHandler(res);
       }, function(res){
           errorHandler(res);
+      }).finally(function(){
+        
+        finallyHandler();
       });
     },
 

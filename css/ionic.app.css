@@ -201,6 +201,8 @@ $dark:                            #444 !default;
 
 .common-person-view {
   /* 头部 */
+  /*发现页-s*/
+  /*发现页-e*/
   /*工具箱-客户-我的预约-s*/
   /*工具箱-客户-我的预约-e*/
   /*工具箱-预约列表-s*/
@@ -209,6 +211,8 @@ $dark:                            #444 !default;
   /*工具箱-全部订单-s*/
   /*工具箱-理财师*/
   /*工具箱-理财师*/
+  /*工具箱-我的预约详情页-s*/
+  /*工具箱-我的预约详情页-e*/
   /* 工具箱-开始 */
   /* 工具箱-结束 */
   /* 注册-忘记密码-开始 */
@@ -236,6 +240,50 @@ $dark:                            #444 !default;
     overflow: auto;
     overflow-x: hidden;
     text-align: left; }
+  .common-person-view .gjfxdvpp {
+    width: 96%;
+    height: 0.9rem;
+    background: #fff;
+    margin: 0.4rem auto 0rem auto;
+    overflow: hidden; }
+  .common-person-view .gjfxdvpp > li {
+    width: 50%;
+    height: 0.8rem;
+    float: left; }
+  .common-person-view .gjfxdvpp > li > a {
+    display: block;
+    width: 100%;
+    height: 100%; }
+  .common-person-view .gjfxdvpp > li > a > span {
+    display: block;
+    width: 100%;
+    height: 0.6rem;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.6rem;
+    text-align: center; }
+  .common-person-view .gjfxdvpp > li > a > em {
+    display: block;
+    width: 0.5rem;
+    height: 0.2rem;
+    margin: auto;
+    background: url(../teImg/lcstop_07.png) no-repeat;
+    background-size: cover; }
+  .common-person-view .gjfxdvpp > li > span {
+    display: block;
+    width: 100%;
+    height: 0.6rem;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.6rem;
+    text-align: center; }
+  .common-person-view .gjfxdvpp > li > em {
+    display: none;
+    width: 0.5rem;
+    height: 0.2rem;
+    margin: auto;
+    background: url(../teImg/lcstop_07.png) no-repeat;
+    background-size: cover; }
   .common-person-view .glcsqtop {
     width: 100%;
     height: 0.7rem;
@@ -760,6 +808,129 @@ $dark:                            #444 !default;
     font-size: 0.3rem;
     color: #e89440;
     line-height: 0.3rem; }
+  .common-person-view .xyglcsqtop {
+    width: 100%;
+    height: 0.7rem;
+    border-radius: 0.03rem;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 0.35rem; }
+  .common-person-view .xyglcsqtop > em {
+    float: left;
+    margin-left: 0.4rem;
+    font-size: 0.35rem;
+    color: #395983;
+    line-height: 0.7rem; }
+  .common-person-view .xyglcsrrdv {
+    width: 100%;
+    height: 2.45rem;
+    background: #fff;
+    border-radius: 0.03rem;
+    margin-top: 0.1rem; }
+  .common-person-view .xxlsrrp {
+    width: 100%;
+    height: 0.8rem;
+    border-bottom: 0.02rem solid #f3f2f5;
+    overflow: hidden; }
+  .common-person-view .xxlsyyss1 {
+    width: 0.8rem;
+    height: 0.32rem;
+    margin-top: 0.24rem;
+    float: left;
+    margin-left: 0.26rem;
+    background: #e79700;
+    font-size: 0.28rem;
+    color: #fff;
+    line-height: 0.32rem;
+    text-align: center; }
+  .common-person-view .xxlsyyss2 {
+    width: 0.8rem;
+    height: 0.32rem;
+    float: left;
+    margin-top: 0.24rem;
+    margin-left: 0.13rem;
+    background: #e30000;
+    font-size: 0.28rem;
+    color: #fff;
+    line-height: 0.32rem;
+    text-align: center; }
+  .common-person-view .xxlsrrp > em {
+    float: left;
+    font-size: 0.3rem;
+    color: #395983;
+    line-height: 0.8rem;
+    margin-left: 0.26rem; }
+  .common-person-view .xxlsrrp > i {
+    float: left;
+    font-size: 0.24rem;
+    color: #e89440;
+    line-height: 0.8rem;
+    margin-left: 0.23rem; }
+  .common-person-view .xxlsrrp > b {
+    float: right;
+    width: 1.6rem;
+    height: 0.5rem;
+    background: #e89440;
+    font-size: 0.28rem;
+    color: #fff;
+    line-height: 0.5rem;
+    text-align: center;
+    border-radius: 0.3rem;
+    margin-top: 0.15rem;
+    margin-right: 0.3rem; }
+  .common-person-view .ssxqbmdv {
+    width: 100%;
+    height: 1.55rem; }
+  .common-person-view .ssxqmf1 {
+    background: url(../teImg/cpcqnr2fs.png) no-repeat;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-size: cover;
+    float: left;
+    font-size: 0.32rem;
+    color: #e89440;
+    line-height: 1.65rem;
+    text-align: center;
+    margin: 0.18rem 0.6rem 0rem 0.45rem; }
+  .common-person-view .ssxqbmdv > p {
+    float: left;
+    margin-right: 0.9rem; }
+  .common-person-view .ssxqbmdv > p > span {
+    display: block;
+    font-size: 0.4rem;
+    color: #e89440;
+    line-height: 0.4rem;
+    text-align: center;
+    margin-top: 0.45rem; }
+  .common-person-view .ssxqbmdv > p > em {
+    display: block;
+    font-size: 0.28rem;
+    color: #395983;
+    line-height: 0.28rem;
+    text-align: center;
+    margin-top: 0.15rem; }
+  .common-person-view .xxxqrr {
+    float: left;
+    margin-left: 0.4rem;
+    margin-top: 0.45rem; }
+  .common-person-view .xxxqrr > span {
+    display: block;
+    font-size: 0.2rem;
+    color: #395983;
+    line-height: 0.2rem;
+    margin-bottom: 0.1rem; }
+  .common-person-view .xxxqrr > span > em {
+    color: #e89440; }
+  .common-person-view .xyglcsqtop > i {
+    float: right;
+    background: url(../teImg/lcstop_07.png) no-repeat;
+    width: 0.5rem;
+    height: 0.2rem;
+    margin-top: 0.3rem;
+    margin-right: 0.5rem;
+    background-size: cover; }
+  .common-person-view .xsglxdv {
+    display: none; }
   .common-person-view .hgjxlf {
     width: 0.42rem;
     height: 0.42rem;
@@ -1652,7 +1823,9 @@ $dark:                            #444 !default;
   /* 注册-忘记密码-开始 */
   /* 注册-忘记密码-结束 */
   /*登陆开始*/
-  /*登陆结束*/ }
+  /*登陆结束*/
+  /*提示页-s*/
+  /*提示页-s*/ }
   .common-main-view ul, .common-main-view li {
     list-style-type: none; }
   .common-main-view input {
@@ -2555,7 +2728,7 @@ $dark:                            #444 !default;
     z-index: 3; }
   .common-main-view .lbalndv {
     position: fixed;
-    z-index: 99;
+    z-index: 89;
     width: 100%;
     height: 100%;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
@@ -2706,6 +2879,39 @@ $dark:                            #444 !default;
     font-size: 0.26rem;
     color: #fff;
     line-height: 0.26rem; }
+  .common-main-view .tsdadv {
+    position: fixed;
+    z-index: 199;
+    width: 100%;
+    height: 100%;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
+    background: rgba(55, 55, 55, 0.6); }
+  .common-main-view .tsma {
+    width: 40%;
+    min-height: 2rem;
+    padding-bottom: 1rem;
+    background: #f3f2f5;
+    position: absolute;
+    left: 50%;
+    margin-left: -20%;
+    top: 50%;
+    margin-top: -2.5rem;
+    border-radius: 0.06rem;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99373737', endColorstr='#99373737');
+    background: rgba(55, 55, 55, 0.7); }
+  .common-main-view .tsma > img {
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    margin: 1rem auto 0.5rem auto; }
+  .common-main-view .tsma > span {
+    display: block;
+    margin: auto;
+    width: 80%;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0.5rem;
+    text-align: center; }
 
 .common-register-view {
   /* 注册-忘记密码-开始 */

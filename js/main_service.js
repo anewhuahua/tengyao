@@ -1,7 +1,7 @@
 angular.module('main.service',[])
 .factory('Main', function(Rest, Storage) {
   var id = null;
-  var role = null;
+  var role = 'Guest';
   var categories = [
     {id: 1, name: "公募基金",  key:'publicfunds', image:'teImg/lbanr1img1.png', page:0, products:[]},
     {id: 2, name: "私募基金",  key:'privatefunds',image:'teImg/lbanr1img2.png', page:0, products:[]},
@@ -11,45 +11,66 @@ angular.module('main.service',[])
   var bookings = [];
 
   return {
-    login: function(username,password) {
-      if (!username && !password){    // if no one appear
+    login: function(param, successHandler, errorHandler, finallyHandler) {
+      var username = null;
+      var password = null;
+      if(!param.username  && !param.password){
         var login = Storage.getObject('login');
-        if(login) {
+         if(login) {
           username = login.username;
           password = login.password; 
         }
+      } else if (param.username && param.password) {
+        username = param.username;
+        password = param.password
+      } else {
+
       }
+
       console.log('username:'+username+';password:'+password); 
       if (username  && password) {  // if both two appear
         Rest.login(username, password, function(res){
           pragma = res.headers('Pragma');
+          if (pragma.indexOf('Consultant')>=0){
+            role = "Consultant";
+          } else if(pragma.indexOf('Customer')>=0) {
+            role = "Customer";
+          }  else {
+            // todo
+          }
+          // to be modify
           console.log(pragma);
           arr = pragma.split('},');
           arr = arr[0].split(',');
           pragma = arr[0].replace('{"id":"', "");
           pragma = pragma.replace('"', "");
-          /*
-          pragma = pragma.replace('[', '');
-          pragma = pragma.replace(']', '');
-          pragma = JSON.parse({'id':'1'});*/
-          
-          console.log(pragma)
-          //pragma = pragma.replace("Id:","");
+          //
+  
           id = pragma;
-          //role = pragma.roles;
+          console.log(id);
+
           Storage.setObject('login', {'username': username, 'password': password});
           console.log('main.service login success:' + id);
+          successHandler();
         }, function(res){
           console.log('main.service login error:'+res.statusText);
+          errorHandler();
+        }, function(){
+          finallyHandler({'id':id, 'role':role});
         });
+      } else {
+        finallyHandler({'id':id, 'role':role});
       }
     },
 
-    logout: function(){
+    logout: function(cb){
+      console.log('main.service login out');
       id = null;
+      role = 'Guest';
       Storage.setObject('login', {'username': null, 'password': null});
-      
+      cb({'id':id, 'role':role});
     },
+
 
     getProducts: function(param, successHandler, errorHandler, finallyHandler){
       var key = "";

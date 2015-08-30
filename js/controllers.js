@@ -26,39 +26,26 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('mainCtrl', function($scope, Main) {
-  /*
-  console.log(Storage.getObject('info'));
-  Storage.getObject('info', {
-    name: 'Thoughts',
-    text: 'Today was a good day'
-  });*/
+.controller('mainCtrl', function($scope, $state, $window, $ionicHistory, Main) {
 
   $scope.data = {
     person: {},
     popup: '',
+    warning: {
+      status: '',
+      words: ''
+    },
     categories: [],
     toolbox:'index',
-    looking_product:null
-  }
-  $scope.data.person.role="customer";
-  if($scope.data.person.id) {
-    console.log('aa');
-  }else {
-    console.log('bb');
-  }
+    looking_product: null
+  };
 
-  Main.login('customer','password');
-  /*
-  var login = Storage.getObject('login');
-  if(login) {
-    Rest.login(login.username, login.password, function(){
-      var profile = Rest.getProfile();
-      Storage.setObject('profile', );
-      Storage.setObject('login', login)
+  Main.login({}, function(){ 
+    }, function(){
+    }, function(profile){
+      $scope.data.person = profile;
+      console.log($scope.data.person.role);
     });
-  }
-  */
 
 
   $scope.showProduct = function(pid) {
@@ -70,10 +57,19 @@ angular.module('starter.controllers', [])
     $scope.data.popup = '';
     $scope.data.looking_product = null;
   }
-
-  $scope.closePopup = function() {
-    $scope.data.popup = '';
+  $scope.closePopup = function(win) {
+    if ($scope.data.popup == win) {
+      $scope.data.popup = '';
+    }
+    if (win == 'login') {
+      $ionicHistory.goBack();
+    }
   }
+  $scope.closeWarning = function(win) {
+    $scope.data.warning.status='';
+    $scope.data.warning.words = '';
+  }
+
   $scope.addBooking= function() {
     if($scope.data.looking_product) {
       console.log('booking add');
@@ -83,6 +79,123 @@ angular.module('starter.controllers', [])
     } else {
       console.log("no product id for booking");
     }
+  }
+
+
+  //$scope.verifyCode = "";
+  $scope.auth = {
+    register: {
+      verifyWords : '发送验证码',
+      username: '',
+      password: '',
+      verifyCode: '',
+      notify: '',
+      statusVeiryCode: false
+    },
+    login: {
+      username:'',
+      password:''
+    }
+  };
+
+  $scope.login = function(username, password){
+    Main.login({'username': username,'password': password}, function(){ 
+        //登入成功
+        $scope.data.warning.status='yes';
+        $scope.data.warning.words = '登入成功';
+        
+        $state.go('main.index');
+
+        setTimeout(function(){
+          $window.location.reload();
+        }, 500);
+      
+
+      }, function(){
+        $scope.data.warning.status = 'fail';
+        $scope.data.warning.words = '请检查用户名和密码';
+        //登入失败
+      }, function(profile){
+        $scope.auth.login.username = '';
+        $scope.auth.login.password = '';
+        $scope.data.person = profile;
+
+      });
+  }
+  $scope.logout = function() {
+    $state.go('main.index');
+    Main.logout(function(profile){ 
+      $scope.data.person = profile;
+      $window.location.reload();
+    });
+  }
+  $scope.backLogin = function() {
+    $scope.data.popup = 'login';
+  }
+  $scope.register_1 = function() {
+    //$scope.user.verifyWords = "发送验证码";
+    $scope.data.popup = 'register_1';
+  }
+
+  $scope.askVerifyCode = function(phone) {
+    $scope.user.statusVeiryCode = true;
+    $scope.win.disable = true;
+    console.log("ask");
+    /*
+    promise = $timeout(function(cnt){
+      $timeout(
+      $scope.user.verifyWords = cnt;
+      cnt = cnt-1;
+    }, 1000);*/
+
+    
+    //timeout
+    var loopVerifyWords = function(cnt) 
+    {
+      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
+      console.log("timeout "+cnt);
+      $scope.user.verifyWords = cnt;
+      if (cnt == 0) {
+        $scope.user.statusVeiryCode = false;
+        $scope.win.disable = false;
+        $scope.user.verifyWords = "发送验证码";
+        $timeout.cancel(promise);
+      }     
+      cnt = cnt-1;
+      $scope.$on('$ionicView.leave',function(){
+        $scope.win.disable = false;
+        $timeout.cancel(promise);
+      }); 
+    }; 
+
+    loopVerifyWords(30);
+
+  
+    Rest.askVerifyCode(phone, function(){
+      $scope.verifyCode = Rest.getVerifyCode();
+      console.log("tyson"+$scope.verifyCode);
+    });
+  }
+
+  $scope.register_2 = function(code) {
+    if ($scope.verifyCode == code && code != "") {
+      $scope.win.register_1 = false;
+      $scope.win.register_2 = true;
+
+    } else {
+      console.log("not fit");
+      $scope.win.notify = true;
+    }
+  }
+  $scope.register_3 = function(name,password,code){
+    //todo Rest Register
+    Rest.register(name,password,code,function(){
+      $scope.win.register_1 = false;
+      $scope.win.register_2 = false;
+      $scope.win.stub = false;
+      $scope.win.main = true;
+    });
+   
   }
   
 })
@@ -95,6 +208,16 @@ angular.module('starter.controllers', [])
   //Rest.login('customer','password');
   $scope.data.categories = Main.getCategories();
 })
+.controller('mainGuestCtrl', function($scope, Main) {
+  $scope.$on('$ionicView.enter',function(){
+    $scope.data.popup='login';
+  });
+  $scope.$on('$ionicView.leave',function(){
+   $scope.data.popup='';
+  });  
+})
+
+
 .controller('mainCategoriesCtrl', function($scope,$ionicPopover,$stateParams, Main) {
   $scope.data.categories = Main.getCategories();
   $scope.selectedCategory = $stateParams.categoryID;
@@ -111,8 +234,10 @@ angular.module('starter.controllers', [])
 
   Main.getProducts({'cid':cid},
   function(cata){
-    $scope.data.products=cata.products;
-    $scope.data.category=cata;
+    if (cata) {
+      $scope.data.products=cata.products;
+      $scope.data.category=cata;
+    }
    
   }, function(){
  
@@ -151,8 +276,10 @@ angular.module('starter.controllers', [])
       Main.getProducts({
         'cid':cid, 'page':1
         },function(cata){
-          $scope.data.products=cata.products;
-          $scope.data.category=cata;
+          if(cata) {
+            $scope.data.products=cata.products;
+            $scope.data.category=cata;
+          }
         },function(){
 
         },function(){
@@ -291,138 +418,11 @@ angular.module('starter.controllers', [])
 
 
 
-  $scope.data.win='';
-  
-  //$scope.data.win='toolbox';
-
-  $scope.verifyCode = "";
-  $scope.user = {
-    verifyWords : '发送验证码',
-    username: '',
-    password: '',
-    verifyCode: '',
-    notify: '',
-    statusVeiryCode: false
-  };
 
 
-  if (Rest.getProfile() == 'visitor') {
-    console.log('visitor');
-  } else {
-  }
-
-  $scope.backLogin = function() {
-    $scope.data.win = 'login'
-  }
-  $scope.login = function(user) {
-    $scope.win.stub = true;
-    Rest.login(user.username, user.password, function(){
-      //todo
-      console.log("login callback");
-      $scope.data.win='toolbox';
-    });
-  }
-
-
-  $scope.register_1 = function() {
-    $scope.user.verifyWords = "发送验证码";
-    $scope.win.stub = true;
-    $scope.win.login = false;
-    $scope.win.register_1 = true;
-  }
-
-  $scope.askVerifyCode = function(phone) {
-    $scope.user.statusVeiryCode = true;
-    $scope.win.disable = true;
-    console.log("ask");
-    /*
-    promise = $timeout(function(cnt){
-      $timeout(
-      $scope.user.verifyWords = cnt;
-      cnt = cnt-1;
-    }, 1000);*/
-
-    
-    //timeout
-    var loopVerifyWords = function(cnt) 
-    {
-      promise = $timeout(function () { loopVerifyWords(cnt); }, 1000); 
-      console.log("timeout "+cnt);
-      $scope.user.verifyWords = cnt;
-      if (cnt == 0) {
-        $scope.user.statusVeiryCode = false;
-        $scope.win.disable = false;
-        $scope.user.verifyWords = "发送验证码";
-        $timeout.cancel(promise);
-      }     
-      cnt = cnt-1;
-      $scope.$on('$ionicView.leave',function(){
-        $scope.win.disable = false;
-        $timeout.cancel(promise);
-      }); 
-    }; 
-
-    loopVerifyWords(30);
-
-  
-    Rest.askVerifyCode(phone, function(){
-      $scope.verifyCode = Rest.getVerifyCode();
-      console.log("tyson"+$scope.verifyCode);
-    });
-  }
-
-  $scope.register_2 = function(code) {
-    if ($scope.verifyCode == code && code != "") {
-      $scope.win.register_1 = false;
-      $scope.win.register_2 = true;
-
-    } else {
-      console.log("not fit");
-      $scope.win.notify = true;
-    }
-  }
-  $scope.register_3 = function(name,password,code){
-    //todo Rest Register
-    Rest.register(name,password,code,function(){
-      $scope.win.register_1 = false;
-      $scope.win.register_2 = false;
-      $scope.win.stub = false;
-      $scope.win.main = true;
-    });
-   
-  }
-
-  
-  console.log('toolbox');
-  //var myElement= document.getElementById('main1');
-  //angular.element(myElement).triggerHandler('click');
-     //angular.element(myElement).triggerHandler('hide');
-  //console.log("11");
-  //Membership.login();
-  
-  /*$scope.$on('$ionicView.enter', function() {
-  
-
-     var myElement= document.getElementById('main1');
-     angular.element(myElement).triggerHandler('click');
-     angular.element(myElement).triggerHandler('hide');
-     console.log("11");
-
-  });*/
 })
 
-.controller('commonLoginCtrl', function($scope, $state, Membership) {
-    $scope.signIn = function(user){
-      Membership.login(user);
 
-      setTimeout(function(){
-        if(Membership.state() != 'guest') {
-          console.log("aaaa");
-          $state.go('main.toolbox');
-        }
-      }, 1000);
-    }
-})
 
 .controller('productDetailCtrl', function($scope,$ionicHistory,$stateParams) {
   var productID = $stateParams.productID;

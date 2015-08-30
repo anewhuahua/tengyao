@@ -9,12 +9,27 @@ navigation history that also transitions its views in and out.
 
 
 
-  <!--错误提示开始-->
-  <div class="lbalntc" ng-if="win.notify" ng-click="hideNotify()">
-    <em><img src="teImg/lbatsk.png"></em>
-    <span>{{user.notify}}</span>     
+<!--提示页-->
+<div ng-switch on="data.warning.status">
+
+  <div class="tsdadv" ng-switch-when='success' ng-click='closeWarning()'>
+    <div class="tsma">
+      <img src="teImg/rctslog.png" />
+      <span>{{data.warning.words}}</span> 
+    </div>
   </div>
-  <!--错误提示结束-->
+
+
+  <div class="tsdadv" ng-switch-when='fail' ng-click='closeWarning()'>
+    <div class="tsma">
+      <img src="teImg/lbatsk.png" />
+      <span>{{data.warning.words}}</span> 
+    </div>
+  </div>
+
+</div>
+<!--提示页-->
+
 
 
   <div ng-switch on="data.popup">
@@ -143,7 +158,7 @@ navigation history that also transitions its views in and out.
   </div><!-- 私募产品详情页弹窗主体 --> 
 </div><!-- 私募产品详情页弹窗结束 -->
 
-
+<!-- todo -->
 <div class="zctsypr" ng-switch-when="booking-success" ng-click="closePopup()"><!-- 注册成功提示-开始 -->
       <div class="zctsylog"><img src="teImg/rctslog.png" /></div>
       <span>您的预约已成功提交!！</span>
@@ -161,26 +176,25 @@ navigation history that also transitions its views in and out.
          <span>用户名和密码不能为空</span>
          
       </div>--><!--登陆提示-->
-      <div class="lbalncldbtn"><!--<img src="teImg/lbalnclobtn.png" title="" alt="">--></div><!--关闭按钮-->
+      <div class="lbalncldbtn"><img src="teImg/lbalnclobtn.png" ng-click="closePopup('login')"></div><!--关闭按钮-->
       <div class="lbalnbmbj"><img src="teImg/lnbombj.jpg" title="" alt=""></div><!--左下角背景图-->
       
       <div class="lbalnlogo"><img src="teImg/lnlogo.png" title="" alt=""></div>
       <form class="lbalogonew">
         <div class="lbalnna">
            <span class="lbalnnalef"><img src="teImg/lbalnyhmlog.png" title="" alt=""></span>
-           <input type="text" class="lbalnnarig" placeholder="用户名" ng-model="user.username"/>
+           <input type="text" class="lbalnnarig" placeholder="手机号码" ng-model="auth.login.username"/>
         </div>
         <div class="lbalnpwd">
            <span class="lbalnpwdlef"><img src="teImg/lbalnpwd.png"></span>
-           <input type="password" class="lbalnpwdrig" placeholder="密码" ng-model="user.password"/>
+           <input type="password" class="lbalnpwdrig" placeholder="密码" ng-model="auth.login.password"/>
         </div> 
-        <input type="submit"  class="lbalndl" value="登陆" ng-click="login(user)"/>
+        <input type="submit"  class="lbalndl" value="登陆" ng-click="login(auth.login.username, auth.login.password)"/>
         <div class="lbalnbm">
             <a href="" class="lbalnbmlf" ng-click="register_1()">注册新用户</a>
             <a href="" class="lbalnbrig">忘记密码？</a>
         </div>
         
-      
       </form>
 
     </div>  
@@ -190,72 +204,65 @@ navigation history that also transitions its views in and out.
 
 
 
-<div class="zcdv" ng-switch-when="register_1" ><!-- 注册开始 -->
-  
-  <div class="zcmain1">
-     <div class="zclfbj"><img src="teImg/zclefbj.png" /></div><!-- 左边背景 -->
-     <div class="zcback" ng-click="backLogin()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
-         <div class="zcclos"><!--<img src="teImg/zcclose.png" />--></div><!-- 关闭 -->
-         <span class="zcwjtit1">注册新用户</span>
-         <span class="zcwjtit2">您的手机号将作为登陆账号</span>
-         
-         <form class="zcwjfrm">
-           <div class="zctel">
-             <span>手机号码</span>
-             <input type="text" placeholder="请输入手机号码"  ng-model="user.phone" ng-disabled="win.disable"/ > 
-           </div> 
-           <div class="zcyzm">
-             <span>验 证 码</span>
-             <input type="text" placeholder="请输入验证码" ng-model="user.verifyCode" /> 
-             <button ng-click='askVerifyCode(user.phone)' ng-disabled="win.disable">{{user.verifyWords}}</button>
-           </div>
-           <input  type="submit" class="zcwjnext" value="下一步" ng-click="register_2(user.verifyCode)" />
-           <em class="zcwjbz">首席金服将对您的信息严格保密，不会在任何地方泄露您的号码</em>
-            
-             
-         </form>
-  </div>
-  
-  
-</div><!-- 注册结束 -->
+  <div class="zcdv" ng-switch-when="register_1" ><!-- 注册开始 -->
+    <div class="zcmain1">
+       <div class="zclfbj"><img src="teImg/zclefbj.png" /></div><!-- 左边背景 -->
+       <div class="zcback" ng-click="backLogin()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
+           <div class="zcclos"><!--<img src="teImg/zcclose.png" />--></div><!-- 关闭 -->
+           <span class="zcwjtit1">注册新用户</span>
+           <span class="zcwjtit2">您的手机号将作为登陆账号</span>
+           
+           <form class="zcwjfrm">
+             <div class="zctel">
+               <span>手机号码</span>
+               <input type="text" placeholder="请输入手机号码"  ng-model="auth.register.username" ng-disabled="win.disable"/ > 
+             </div> 
+             <div class="zcyzm">
+               <span>验 证 码</span>
+               <input type="text" placeholder="请输入验证码" ng-model="auth.register.verifyCode" /> 
+               <button ng-click='askVerifyCode(auth.register.phone)' ng-disabled="win.disable">{{user.verifyWords}}</button>
+             </div>
+             <input  type="submit" class="zcwjnext" value="下一步" ng-click="register_2(user.verifyCode)" />
+             <em class="zcwjbz">首席金服将对您的信息严格保密，不会在任何地方泄露您的号码</em>
+           </form>
+    </div>
+  </div><!-- 注册结束 -->
   
   
   
-<div class="zcdv" ng-switch-when="register_2"><!-- 注册开始 -->
-  
-  <div class="zcmain1">
-     <div class="zclfbj"><img src="teImg/zclefbj.png" /></div><!-- 左边背景 -->
-     <div class="zcback" ng-click="backLogin()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
-         <div class="zcclos"><!--img src="teImg/zcclose.png" />--></div><!-- 关闭 -->
-         <span class="zcwjtit1">注册新用户</span>
-         
-         
-         <form class="zcwjfrm zcwjfrmmm">
-           <div class="zctel zctelmm">
-             <span>您的密码</span>
-             <input type="text" placeholder="8-20位，必须含有字母" ng-model="user.password"/> 
-           </div> 
-           <div class="zctel zctelmm">
-             <span>重复密码</span>
-             <input type="text" placeholder="请重复输入你的密码" /> 
-           </div>
-           <div class="zctel zctelmm">
-             <span>推 荐 人</span>
-             <input type="text" placeholder="请输入对方手机号码（选填）" /> 
-           </div>
-           <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(user.phone,user.password, user.verifyCode)"/>
-           <p class="zcmmjs">
-              <span><img src="teImg/zcmmjslog.jpg" /></span>
-              <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
-           </p>
-        
-         </form>
+  <div class="zcdv" ng-switch-when="register_2"><!-- 注册开始 -->
+    
+    <div class="zcmain1">
+       <div class="zclfbj"><img src="teImg/zclefbj.png" /></div><!-- 左边背景 -->
+       <div class="zcback" ng-click="backLogin()"><img src="teImg/zcback.png" /></div><!-- 返回 -->
+           <div class="zcclos"><!--img src="teImg/zcclose.png" />--></div><!-- 关闭 -->
+           <span class="zcwjtit1">注册新用户</span>
+           
+           
+           <form class="zcwjfrm zcwjfrmmm">
+             <div class="zctel zctelmm">
+               <span>您的密码</span>
+               <input type="text" placeholder="8-20位，必须含有字母" ng-model="user.password"/> 
+             </div> 
+             <div class="zctel zctelmm">
+               <span>重复密码</span>
+               <input type="text" placeholder="请重复输入你的密码" /> 
+             </div>
+             <div class="zctel zctelmm">
+               <span>推 荐 人</span>
+               <input type="text" placeholder="请输入对方手机号码（选填）" /> 
+             </div>
+             <input  type="submit" class="zcwjnext" value="完成注册" ng-click="register_3(user.phone,user.password, user.verifyCode)"/>
+             <p class="zcmmjs">
+                <span><img src="teImg/zcmmjslog.jpg" /></span>
+                <em>我已阅读并同意<i>《首席金服用户协议》</i></em>
+             </p>
+          
+           </form>
 
-  </div>
-</div><!-- 注册结束 -->
+    </div>
+  </div><!-- 注册结束 -->
 </div>
-
-
 
 </div>  <!--common-main-view-->
 
@@ -287,18 +294,22 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="main-my-toolbox"></ion-nav-view>
   </ion-tab>-->
   
+  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/guest" ng-switch-when="Guest">
+    <ion-nav-view name="main-guest"></ion-nav-view>
+  </ion-tab>
 
-
-  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/my" ng-switch-when='customer'>
+  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/my" ng-switch-when='Customer'>
     <ion-nav-view name="main-my-menu"></ion-nav-view>
     <ion-nav-view name="main-my-toolbox"></ion-nav-view>
   </ion-tab>
 
 
-  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/toolbox" ng-switch-when='consultant'>
+  <ion-tab title="我的" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/main/toolbox" ng-switch-when='Consultant'>
     <ion-nav-view name="main-consultant-menu"></ion-nav-view>
     <ion-nav-view name="main-consultant-toolbox"></ion-nav-view>
   </ion-tab>
+
+
 
     <!-- ToolBox Tab -->
     <!--

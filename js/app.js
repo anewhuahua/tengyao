@@ -76,6 +76,15 @@ angular.module('starter', ['ionic', 'ionicMultipleViews','starter.controllers', 
     }
   })
 
+  .state('main.guest', {
+    url: '/guest',
+    views: {
+        'main-guest': {
+        templateUrl: 'templates/main/guest.html',
+        controller: 'mainGuestCtrl'
+      }
+    }
+  })
 
   .state('main.my', {
     url: '/my',

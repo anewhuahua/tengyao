@@ -46,6 +46,56 @@
   
        
 <div class="main1"><!-- 中间内容开始 -->  
+
+
+            <div class="gnr2dadv"><!--内容右侧开始-->
+
+                <div class="gjxnrtopyy"></div>
+                <!-- 内容top阴影 -->
+                
+                
+                <ul class="gjfxdvpp">
+                  <li> <a href="###">
+                    <span>排序</span>
+                    <em class="curdis"></em>
+                   </a></li>
+                  <li><a href="###">
+                    <span>筛选</span>
+                    <em></em>
+                   </a></li> 
+                </ul><!--发现外层top-e-->
+                
+                
+                
+                
+                <div class="gnr2ma"> <!--发现内容主体外层-->
+          
+                  <div class="xyglcsrrdv" ng-repeat="product in data.products" ng-click="showProduct(product.id)"><!--发现内容主体-->
+                  
+                      <div class="xxlsrrp">
+                        <span class="xxlsyyss1">推荐</span>
+                        <span class="xxlsyyss2">热销</span>
+                        <em>{{product.issuer}}</em>
+                      </div>
+                      
+                      <div class="ssxqbmdv">
+                          <span class="ssxqmf1">63%</span>
+                          <p><span>10.50%</span> <em>预期年化</em></p>
+                          <p><span>120天</span> <em>理财期限</em></p>
+                          <div class="xxxqrr"> 
+                            <span>目标规模 <em> 36,500.00 </em>万元</span>
+                            <span>认购费用 <em> 100 </em>万起</span>
+                            <span>剩余时间 <em> 21 </em>天</span>
+                          </div>
+                      </div>
+                      
+                  </div>  <!--发现内容主体-->
+                      
+              </div><!--发现内容主体外层-->
+            </div><!--内容右侧结束-->
+
+
+<!--
     <ul class="cplbanr2ul">
                 <li ng-repeat="product in data.products"><a href="" ng-click="showProduct(product.id)">
                    <div class="cqlbanr2uldv1"><span>推荐</span> <em>热销</em> <i>{{product.issuer}}</i> </div>
@@ -64,7 +114,7 @@
 
                 </a></li>
                 
-              </ul>
+              </ul>-->
 </div>
       
   <ion-infinite-scroll
@@ -101,7 +151,7 @@
       </ion-popover-view>
     </script>
 -->
-  <multiple-views-support width="70%" />
+  <multiple-views-support width="75%" />
 </ion-view>
 
 
